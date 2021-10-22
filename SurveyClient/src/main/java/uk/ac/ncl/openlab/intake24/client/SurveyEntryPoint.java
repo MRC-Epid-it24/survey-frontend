@@ -60,7 +60,6 @@ import java.util.ArrayList;
 import java.util.Map;
 
 public class SurveyEntryPoint implements EntryPoint {
-
     private static int CUSTOM_DATA_REDIRECT_RECALL_NUMBER = 3; // hardcoded for now, should be moved to scheme when required
 
     private Anchor watchTutorial;
@@ -74,10 +73,12 @@ public class SurveyEntryPoint implements EntryPoint {
         try {
             String redirectURL = customFields.get("redirect url");
 
-            if (userData.recallNumber == CUSTOM_DATA_REDIRECT_RECALL_NUMBER && redirectURL != null && !redirectURL.isEmpty()) {
-                DynamicRedirect.set(Long.parseLong(AuthCache.getCurrentUserId()), redirectURL);
-            } else {
-                DynamicRedirect.clear(Long.parseLong(AuthCache.getCurrentUserId()));
+            if (redirectURL != null) {
+                if (userData.recallNumber == CUSTOM_DATA_REDIRECT_RECALL_NUMBER && !redirectURL.isEmpty()) {
+                    DynamicRedirect.set(Long.parseLong(AuthCache.getCurrentUserId()), redirectURL);
+                } else {
+                    DynamicRedirect.clear(Long.parseLong(AuthCache.getCurrentUserId()));
+                }
             }
         } catch (RuntimeException e) {
             BrowserConsole.error(e.getMessage());
