@@ -24,7 +24,7 @@ description := "Intake24 GWT survey client"
 
 maintainer := "Ivan Poliakov <ivan.poliakov@ncl.ac.uk>"
 
-version := "3.2.0-SNAPSHOT"
+version := "3.2.0-SNAPSHOT_ABS"
 
 scalaVersion := "2.12.14"
 
