@@ -16,7 +16,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-name := "intake24-survey-site"
+name := "intake24-survey-site-ABS"
 
 organization := "uk.ac.ncl.openlab.intake24"
 
@@ -24,7 +24,7 @@ description := "Intake24 GWT survey client"
 
 maintainer := "Ivan Poliakov <ivan.poliakov@ncl.ac.uk>"
 
-version := "3.2.0-SNAPSHOT_ABS"
+version := "3.2.0-SNAPSHOT"
 
 scalaVersion := "2.12.14"
 
