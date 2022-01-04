@@ -134,8 +134,16 @@ public interface StandardUnits extends ConstantsWithLookup {
   public String cabbages_estimate_in();
   public String cabbages_how_many();
 
+<<<<<<< HEAD
   public String cakes_estimate_in();
   public String cakes_how_many();
+=======
+	public String crumpets_estimate_in();
+	public String crumpets_how_many();
+
+	public String cubes_estimate_in();
+	public String cubes_how_many();
+>>>>>>> master
 
   public String calamari_rings_estimate_in();
   public String calamari_rings_how_many();
@@ -200,8 +208,16 @@ public interface StandardUnits extends ConstantsWithLookup {
   public String cloves_estimate_in();
   public String cloves_how_many();
 
+<<<<<<< HEAD
   public String cobs_estimate_in();
   public String cobs_how_many();
+=======
+	public String giant_crumpets_estimate_in();
+	public String giant_crumpets_how_many();
+
+	public String grapes_estimate_in();
+	public String grapes_how_many();
+>>>>>>> master
 
   public String cocktail_frankfurts_estimate_in();
   public String cocktail_frankfurts_how_many();
@@ -662,8 +678,16 @@ public interface StandardUnits extends ConstantsWithLookup {
   public String large_sundaes_estimate_in();
   public String large_sundaes_how_many();
 
+<<<<<<< HEAD
   public String large_sweet_potatoes_estimate_in();
   public String large_sweet_potatoes_how_many();
+=======
+	public String pikelets_estimate_in();
+	public String pikelets_how_many();
+
+	public String pilchards_estimate_in();
+	public String pilchards_how_many();
+>>>>>>> master
 
   public String large_takeaway_serves_estimate_in();
   public String large_takeaway_serves_how_many();
@@ -809,8 +833,16 @@ public interface StandardUnits extends ConstantsWithLookup {
   public String medium_pieces_estimate_in();
   public String medium_pieces_how_many();
 
+<<<<<<< HEAD
   public String medium_potatoes_estimate_in();
   public String medium_potatoes_how_many();
+=======
+	public String small_burgers_estimate_in();
+	public String small_burgers_how_many();
+
+	public String small_cakes_estimate_in();
+	public String small_cakes_how_many();
+>>>>>>> master
 
   public String medium_shanks_estimate_in();
   public String medium_shanks_how_many();
@@ -878,8 +910,16 @@ public interface StandardUnits extends ConstantsWithLookup {
   public String mini_cakes_estimate_in();
   public String mini_cakes_how_many();
 
+<<<<<<< HEAD
   public String mini_churros_estimate_in();
   public String mini_churros_how_many();
+=======
+	public String small_pastries_estimate_in();
+	public String small_pastries_how_many();
+
+	public String small_parsnips_estimate_in();
+	public String small_parsnips_how_many();
+>>>>>>> master
 
   public String mini_corn_cakes_estimate_in();
   public String mini_corn_cakes_how_many();
