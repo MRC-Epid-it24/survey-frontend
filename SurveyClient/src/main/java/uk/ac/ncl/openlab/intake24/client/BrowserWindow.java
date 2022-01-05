@@ -18,4 +18,8 @@ public class BrowserWindow {
 	public static native void alert(String msg) /*-{
 		$wnd.alert(msg);
 	}-*/;
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> support/rhel
