@@ -35,7 +35,7 @@ scalaVersion := "2.12.14"
 resolvers += Resolver.mavenLocal
 
 lazy val packageManagerSettings = Seq(
-  rpmRelease := "3.0.3",
+  rpmRelease := "3.0.4",
   rpmVendor := "uk.ac.ncl.openlab.intake24",
   rpmUrl := Some("https://github.com/intake24/survey-frontend"),
   rpmLicense := Some("ASL 2.0")
