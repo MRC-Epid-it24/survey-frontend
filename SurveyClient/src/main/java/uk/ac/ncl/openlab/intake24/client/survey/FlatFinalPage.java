@@ -41,6 +41,7 @@ import org.fusesource.restygwt.client.MethodCallback;
 import org.workcraft.gwt.shared.client.Callback1;
 import org.workcraft.gwt.shared.client.Callback2;
 import org.workcraft.gwt.shared.client.Option;
+import uk.ac.ncl.openlab.intake24.client.BrowserWindow;
 import uk.ac.ncl.openlab.intake24.client.EmbeddedData;
 import uk.ac.ncl.openlab.intake24.client.LoadingPanel;
 import uk.ac.ncl.openlab.intake24.client.api.auth.AuthCache;
@@ -101,6 +102,7 @@ public class FlatFinalPage implements SurveyStage<Survey> {
 
             @Override
             public void onSuccess(Method method, SurveySubmissionResponse response) {
+                BrowserWindow.postMessage("submitted");
                 contents.clear();
 
                 if (response.redirectToFeedback) {
