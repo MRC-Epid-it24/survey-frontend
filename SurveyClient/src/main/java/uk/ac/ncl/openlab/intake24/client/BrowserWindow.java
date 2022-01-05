@@ -12,7 +12,7 @@ package uk.ac.ncl.openlab.intake24.client;
 
 public class BrowserWindow {
 	public static native void postMessage(String msg) /*-{
-		$wnd.parent.postMessage(msg);
+		$wnd.parent.postMessage(msg, "*");
 	}-*/;
 
 	public static native void alert(String msg) /*-{
