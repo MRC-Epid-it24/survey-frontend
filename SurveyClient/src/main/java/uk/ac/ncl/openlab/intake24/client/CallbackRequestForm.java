@@ -11,6 +11,7 @@ http://www.nationalarchives.gov.uk/doc/open-government-licence/
 package uk.ac.ncl.openlab.intake24.client;
 
 import com.google.gwt.event.dom.client.*;
+import com.google.gwt.dom.client.Style;
 import com.google.gwt.safehtml.shared.SafeHtmlUtils;
 import com.google.gwt.user.client.ui.*;
 import org.fusesource.restygwt.client.Method;
@@ -94,10 +95,12 @@ public class CallbackRequestForm extends Composite {
         this.nameTextBox = new TextBox();
         this.phoneNumberTextBox = new TextBox();
 
-        g.setWidget(0, 0, nameLabel);
+        // Hack for ABS need more elegant solution wih conditional styles and build configurations
+        //g.setWidget(0, 0, nameLabel); //ABS
         g.setWidget(1, 0, phoneNumberLabel);
-        g.setWidget(0, 1, nameTextBox);
+        //g.setWidget(0, 1, nameTextBox); //ABS
         g.setWidget(1, 1, phoneNumberTextBox);
+        g.removeRow(1); //ABS
 
         VerticalPanel p = new VerticalPanel();
         p.setHorizontalAlignment(HasHorizontalAlignment.ALIGN_CENTER);
@@ -131,6 +134,8 @@ public class CallbackRequestForm extends Composite {
         });
 
         requestCallbackButton.getElement().setId("intake24-login-button");
+        // Hack for ABS need more elegant solution wih conditional styles and build configuration
+        requestCallbackButton.getElement().getStyle().setDisplay(Style.Display.NONE);
 
         nameTextBox.addKeyPressHandler(new KeyPressHandler() {
             @Override
