@@ -16,7 +16,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-name := "intake24-survey-site-ABS"
+name := "intake24-survey-site-abs"
 
 organization := "uk.ac.ncl.openlab.intake24"
 
