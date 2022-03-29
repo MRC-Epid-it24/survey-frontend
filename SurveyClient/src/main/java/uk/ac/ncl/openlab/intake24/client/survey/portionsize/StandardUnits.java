@@ -95,8 +95,16 @@ public interface StandardUnits extends ConstantsWithLookup {
   public String biscuits_estimate_in();
   public String biscuits_how_many();
 
+<<<<<<< HEAD
   public String bite_size_pieces_estimate_in();
   public String bite_size_pieces_how_many();
+=======
+	public String buttons_estimate_in();
+	public String buttons_how_many();
+
+	public String cakes_estimate_in();
+	public String cakes_how_many();
+>>>>>>> 4cd54cad (feat(units): standard units)
 
   public String bottles_estimate_in();
   public String bottles_how_many();
@@ -206,11 +214,25 @@ public interface StandardUnits extends ConstantsWithLookup {
   public String cocktail_frankfurts_estimate_in();
   public String cocktail_frankfurts_how_many();
 
+<<<<<<< HEAD
   public String cocktail_sausages_estimate_in();
   public String cocktail_sausages_how_many();
 
   public String coconuts_estimate_in();
   public String coconuts_how_many();
+=======
+	public String giant_buttons_estimate_in();
+	public String giant_buttons_how_many();
+
+	public String giant_crumpets_estimate_in();
+	public String giant_crumpets_how_many();
+
+	public String goujons_estimate_in();
+	public String goujons_how_many();
+
+	public String grapes_estimate_in();
+	public String grapes_how_many();
+>>>>>>> 4cd54cad (feat(units): standard units)
 
   public String cones_estimate_in();
   public String cones_how_many();
@@ -242,8 +264,16 @@ public interface StandardUnits extends ConstantsWithLookup {
   public String croutons_estimate_in();
   public String croutons_how_many();
 
+<<<<<<< HEAD
   public String cubes_estimate_in();
   public String cubes_how_many();
+=======
+	public String individual_slices_estimate_in();
+	public String individual_slices_how_many();
+
+	public String individual_tarts_estimate_in();
+	public String individual_tarts_how_many();
+>>>>>>> 4cd54cad (feat(units): standard units)
 
   public String cucumbers_estimate_in();
   public String cucumbers_how_many();
@@ -278,8 +308,19 @@ public interface StandardUnits extends ConstantsWithLookup {
   public String dates_estimate_in();
   public String dates_how_many();
 
+<<<<<<< HEAD
   public String dim_sims_estimate_in();
   public String dim_sims_how_many();
+=======
+	public String large_burgers_estimate_in();
+	public String large_burgers_how_many();
+
+	public String large_cakes_estimate_in();
+	public String large_cakes_how_many();
+
+	public String large_carrots_estimate_in();
+	public String large_carrots_how_many();
+>>>>>>> 4cd54cad (feat(units): standard units)
 
   public String dixie_cups_estimate_in();
   public String dixie_cups_how_many();
@@ -302,8 +343,16 @@ public interface StandardUnits extends ConstantsWithLookup {
   public String drumsticks_estimate_in();
   public String drumsticks_how_many();
 
+<<<<<<< HEAD
   public String dumplings_estimate_in();
   public String dumplings_how_many();
+=======
+	public String large_fingers_estimate_in();
+	public String large_fingers_how_many();
+
+	public String large_flapjacks_estimate_in();
+	public String large_flapjacks_how_many();
+>>>>>>> 4cd54cad (feat(units): standard units)
 
   public String durians_estimate_in();
   public String durians_how_many();
@@ -365,8 +414,16 @@ public interface StandardUnits extends ConstantsWithLookup {
   public String fillets_or_steaks_estimate_in();
   public String fillets_or_steaks_how_many();
 
+<<<<<<< HEAD
   public String fingers_estimate_in();
   public String fingers_how_many();
+=======
+	public String large_rolls_estimate_in();
+	public String large_rolls_how_many();
+
+	public String large_scones_estimate_in();
+	public String large_scones_how_many();
+>>>>>>> 4cd54cad (feat(units): standard units)
 
   public String fish_estimate_in();
   public String fish_how_many();
@@ -518,8 +575,16 @@ public interface StandardUnits extends ConstantsWithLookup {
   public String large_berries_estimate_in();
   public String large_berries_how_many();
 
+<<<<<<< HEAD
   public String large_biscuits_estimate_in();
   public String large_biscuits_how_many();
+=======
+	public String medium_rolls_estimate_in();
+	public String medium_rolls_how_many();
+
+	public String medium_scones_estimate_in();
+	public String medium_scones_how_many();
+>>>>>>> 4cd54cad (feat(units): standard units)
 
   public String large_bunnies_or_bilbies_estimate_in();
   public String large_bunnies_or_bilbies_how_many();
@@ -581,8 +646,16 @@ public interface StandardUnits extends ConstantsWithLookup {
   public String large_grapefruits_estimate_in();
   public String large_grapefruits_how_many();
 
+<<<<<<< HEAD
   public String large_leaves_estimate_in();
   public String large_leaves_how_many();
+=======
+	public String mini_rolls_estimate_in();
+	public String mini_rolls_how_many();
+
+	public String mini_skewers_estimate_in();
+	public String mini_skewers_how_many();
+>>>>>>> 4cd54cad (feat(units): standard units)
 
   public String large_leeks_estimate_in();
   public String large_leeks_how_many();
@@ -611,8 +684,16 @@ public interface StandardUnits extends ConstantsWithLookup {
   public String large_onions_estimate_in();
   public String large_onions_how_many();
 
+<<<<<<< HEAD
   public String large_pappadams_estimate_in();
   public String large_pappadams_how_many();
+=======
+	public String multipack_bars_estimate_in();
+	public String multipack_bars_how_many();
+
+	public String multipack_bottles_estimate_in();
+	public String multipack_bottles_how_many();
+>>>>>>> 4cd54cad (feat(units): standard units)
 
   public String large_patties_or_cakes_estimate_in();
   public String large_patties_or_cakes_how_many();
@@ -626,8 +707,16 @@ public interface StandardUnits extends ConstantsWithLookup {
   public String large_pineapples_estimate_in();
   public String large_pineapples_how_many();
 
+<<<<<<< HEAD
   public String large_potatoes_estimate_in();
   public String large_potatoes_how_many();
+=======
+	public String nuggets_dippers_estimate_in();
+	public String nuggets_dippers_how_many();
+
+	public String nuts_estimate_in();
+	public String nuts_how_many();
+>>>>>>> 4cd54cad (feat(units): standard units)
 
   public String large_pouches_estimate_in();
   public String large_pouches_how_many();
