@@ -550,7 +550,7 @@ public interface PromptMessages extends Messages {
 
     public String standardUnit_unitChoiceContinueButtonLabel();
 
-    public String readyMeals_promptText(String mealName);
+    public String readyMeals_promptText(@Optional String mealName);
 
     public String milkInHotDrink_promptText(String milkName);
 

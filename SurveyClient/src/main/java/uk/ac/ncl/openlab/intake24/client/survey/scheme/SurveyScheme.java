@@ -36,6 +36,7 @@ import uk.ac.ncl.openlab.intake24.client.survey.scheme.ndns.April2019;
 import uk.ac.ncl.openlab.intake24.client.survey.scheme.ndns.FollowUp;
 import uk.ac.ncl.openlab.intake24.client.survey.scheme.ndns.NDNSDefault;
 import uk.ac.ncl.openlab.intake24.client.survey.scheme.ndns.October2019;
+import uk.ac.ncl.openlab.intake24.client.survey.scheme.ndns.October2019Behaviour;
 import uk.ac.ncl.openlab.intake24.client.survey.scheme.sab.SAB;
 
 import java.util.List;
@@ -73,6 +74,8 @@ public interface SurveyScheme {
                 return new April2019(locale, surveyParameters, interfaceManager, userData);
             case October2019.ID:
                 return new October2019(locale, surveyParameters, interfaceManager, userData);
+            case October2019Behaviour.ID:
+                return new October2019Behaviour(locale, surveyParameters, interfaceManager, userData);
             case FollowUp.ID:
                 return new FollowUp(locale, surveyParameters, interfaceManager, userData);
             // SAB Schemes

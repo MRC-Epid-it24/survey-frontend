@@ -16,9 +16,13 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
+<<<<<<< HEAD
+name := "intake24-survey-site-abs"
+=======
 val organization = "uk.ac.ncl.openlab.intake24"
 
 name := "intake24-survey-site"
+>>>>>>> support/rhel
 
 //organization := organizationVal
 
@@ -26,10 +30,15 @@ description := "Intake24 GWT survey client"
 
 maintainer := "Ivan Poliakov <ivan.poliakov@ncl.ac.uk>"
 
+<<<<<<< HEAD
+version := "3.2.0-SNAPSHOT"
+
+=======
 
 version := "3.2.0-SNAPSHOT"
 
 
+>>>>>>> support/rhel
 scalaVersion := "2.12.14"
 
 resolvers += Resolver.mavenLocal
@@ -74,4 +83,26 @@ javaOptions in Universal ++= Seq(
   s"-Dlogger.file=/usr/share/${packageName.value}/conf/production-logger.xml"
 )
 
+<<<<<<< HEAD
+lazy val root = (project in file(".")).enablePlugins(PlayScala, SystemdPlugin, JDebPackaging)
+
+// lazy val root = (project in file(".")).
+//   enablePlugins(PlayScala, SystemdPlugin, RpmPlugin).
+//   settings(
+//     name := "intake24-survey-site",
+//     scalaVersion := "2.12.14",
+//     defaultLinuxInstallLocation := "/opt",
+//     rpmPrefix := Some("/opt"),
+//     linuxPackageSymlinks := Seq.empty,
+//     defaultLinuxLogsLocation := defaultLinuxInstallLocation + "/" + name,
+//     packageName in Rpm := "intake24-survey-site",
+//     packageArchitecture in Rpm := "noarch",
+//     rpmRelease := "1",
+//     rpmVendor := "Monash",
+//     rpmUrl := Some("http://www.intake24.com"),
+//     rpmLicense := Some("MIT"),
+//     rpmGroup := Some("Applications/intake24")
+//   )
+=======
 lazy val root = (project in file(".")).settings(packageManagerSettings: _*).enablePlugins(PlayScala, SystemdPlugin, JDebPackaging, RpmPlugin)
+>>>>>>> support/rhel
