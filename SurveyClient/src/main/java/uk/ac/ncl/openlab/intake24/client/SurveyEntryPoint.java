@@ -95,7 +95,9 @@ public class SurveyEntryPoint implements EntryPoint {
         ArrayList<Anchor> navbarLinks = new ArrayList<>();
         navbarLinks.addAll(scheme.navBarLinks());
         navbarLinks.add(watchTutorial);
-        navbarLinks.add(logOut);
+        
+        //ABS change: delete Log out button
+        if (!SurveyMessages.INSTANCE.navBar_logOut().isEmpty()) navbarLinks.add(logOut);
 
         Layout.setNavBar(navbarUserInfo, navbarLinks);
 
