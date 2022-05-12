@@ -70,7 +70,16 @@ public class EditableFoodList extends Composite {
                     addItem(Option.some(linked));
                 }
             }
+
         }
+
+        //ABS clean-up
+        if (!(foodList.getItems().isEmpty())) {
+            absListItem2.getElement().getStyle().setDisplay(Display.NONE);
+            absListItem1.getElement().getStyle().setDisplay(Display.NONE);
+            getLogger().warning("FoodList is NOT empty: " + foodList.getItems()); 
+        }
+        else getLogger().warning("FoodList is empty: " + foodList.getItems());
     }
 
     private void deselect() {
@@ -234,13 +243,6 @@ public class EditableFoodList extends Composite {
             public void visitNone() {
             }
         });
-
-        //ABS clean-up
-        // if (!(result.isEmpty())) {
-        //     absListItem2.getElement().getStyle().setDisplay(Display.NONE);
-        //     absListItem1.getElement().getStyle().setDisplay(Display.NONE); 
-        // }
-        // else getLogger().info("FoodList is empty: " + result);
 
         return result;
     }
