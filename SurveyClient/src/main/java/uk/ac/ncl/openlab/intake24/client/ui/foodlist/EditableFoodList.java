@@ -10,13 +10,17 @@ http://www.nationalarchives.gov.uk/doc/open-government-licence/
 
 package uk.ac.ncl.openlab.intake24.client.ui.foodlist;
 
+import java.util.logging.Logger;
+import com.google.gwt.core.client.GWT;
 import com.google.gwt.core.client.Scheduler;
 import com.google.gwt.core.client.Scheduler.ScheduledCommand;
+import com.google.gwt.dom.client.Style.Display;
 import com.google.gwt.dom.client.Style.Visibility;
 import com.google.gwt.event.dom.client.*;
 import com.google.gwt.user.client.Event;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.FlowPanel;
+import com.google.gwt.logging.client.LogConfiguration;
 
 import org.workcraft.gwt.shared.client.Callback1;
 import org.workcraft.gwt.shared.client.Function1;
@@ -33,12 +37,26 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class EditableFoodList extends Composite {
+    private Logger logger;
+
     private final UnorderedList<EditableFoodListItem> foodList;
     private final EditableFoodListItem newItem;
+
+    //ABS 3 imtes in the list task
+    private final EditableFoodListItem absListItem1;
+    private final EditableFoodListItem absListItem2;
+
     private final boolean markAsDrink;
     private final Callback1<List<FoodEntry>> onChange;
 
     private boolean indentLinkedFoods = true;
+
+    private Logger getLogger() {
+        if ( GWT.isClient() && LogConfiguration.loggingIsEnabled() && this.logger == null) {
+            this.logger = Logger.getLogger( EditableFoodList.class.getName() );
+        }
+        return this.logger;
+    }
 
     public EditableFoodList(PVector<FoodEntry> foods, Function1<FoodEntry, Boolean> filter, String addButtonText, final boolean markAsDrink,
                             Callback1<List<FoodEntry>> onChange) {
@@ -71,6 +89,14 @@ public class EditableFoodList extends Composite {
             return;
         addItem(Option.some(newItem.mkFoodEntry(markAsDrink)));
         newItem.clearText();
+
+        //ABS 3 fields changes
+        if ((absListItem1.getElement().getStyle().getDisplay() == "none") && !(absListItem2.getElement().getStyle().getDisplay() == "none"))
+            absListItem2.getElement().getStyle().setDisplay(Display.NONE);
+            getLogger().info("absList2 is hidden ");
+        if (!(absListItem1.getElement().getStyle().getDisplay() == "none"))
+            absListItem1.getElement().getStyle().setDisplay(Display.NONE); 
+            getLogger().info("absList1 is hidden ");        
         focusNew();
         onChange.call(getEnteredItems());
     }
@@ -116,8 +142,27 @@ public class EditableFoodList extends Composite {
             }
         });
 
+        //ABS changes = Adding 3 fields in FoodEdit Prompt
+        absListItem1 = new EditableFoodListItem(Option.<FoodEntry>none());
+        absListItem1.addStyleName("intake24-food-list-new-item");
+        absListItem1.textBox.addStyleName("intake24-food-list-textbox-new-item");
+        absListItem1.textBox.getElement().setAttribute("disabled", "disabled");
+        absListItem1.textBox.setText(" ");
+
+        absListItem2 = new EditableFoodListItem(Option.<FoodEntry>none());
+        absListItem2.addStyleName("intake24-food-list-new-item");
+        absListItem2.textBox.addStyleName("intake24-food-list-textbox-new-item");
+        absListItem2.textBox.getElement().setAttribute("disabled", "disabled");
+        absListItem2.textBox.setText(" ");
+
         UnorderedList<EditableFoodListItem> newItemContainer = new UnorderedList<EditableFoodListItem>();
         newItemContainer.addItem(newItem);
+        
+        //ABS canges = for adding 3 fields in FoodEdit Prompt
+        UnorderedList<EditableFoodListItem> absItem1Container = new UnorderedList<EditableFoodListItem>();
+        absItem1Container.addItem(absListItem1);
+        UnorderedList<EditableFoodListItem> absItem2Container = new UnorderedList<EditableFoodListItem>();
+        absItem2Container.addItem(absListItem2);
 
         newItem.showPlaceholderText();
 
@@ -151,6 +196,8 @@ public class EditableFoodList extends Composite {
 
         contents.add(foodList);
         contents.add(newItemContainer);
+        contents.add(absItem1Container);
+        contents.add(absItem2Container);
     }
 
     public List<EditableFoodListItem> linkedItems(EditableFoodListItem item) {
@@ -187,6 +234,13 @@ public class EditableFoodList extends Composite {
             public void visitNone() {
             }
         });
+
+        //ABS clean-up
+        // if (!(result.isEmpty())) {
+        //     absListItem2.getElement().getStyle().setDisplay(Display.NONE);
+        //     absListItem1.getElement().getStyle().setDisplay(Display.NONE); 
+        // }
+        // else getLogger().info("FoodList is empty: " + result);
 
         return result;
     }
