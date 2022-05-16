@@ -10,8 +10,6 @@ http://www.nationalarchives.gov.uk/doc/open-government-licence/
 
 package uk.ac.ncl.openlab.intake24.client.ui.foodlist;
 
-import java.util.logging.Logger;
-import com.google.gwt.core.client.GWT;
 import com.google.gwt.core.client.Scheduler;
 import com.google.gwt.core.client.Scheduler.ScheduledCommand;
 import com.google.gwt.dom.client.Style.Display;
@@ -51,13 +49,6 @@ public class EditableFoodList extends Composite {
 
     private boolean indentLinkedFoods = true;
 
-    private Logger getLogger() {
-        if ( GWT.isClient() && LogConfiguration.loggingIsEnabled() && this.logger == null) {
-            this.logger = Logger.getLogger( EditableFoodList.class.getName() );
-        }
-        return this.logger;
-    }
-
     public EditableFoodList(PVector<FoodEntry> foods, Function1<FoodEntry, Boolean> filter, String addButtonText, final boolean markAsDrink,
                             Callback1<List<FoodEntry>> onChange) {
         this(addButtonText, markAsDrink, onChange);
@@ -77,9 +68,7 @@ public class EditableFoodList extends Composite {
         if (!(foodList.getItems().isEmpty())) {
             absListItem2.getElement().getStyle().setDisplay(Display.NONE);
             absListItem1.getElement().getStyle().setDisplay(Display.NONE);
-            getLogger().warning("FoodList is NOT empty: " + foodList.getItems()); 
         }
-        else getLogger().warning("FoodList is empty: " + foodList.getItems());
     }
 
     private void deselect() {
@@ -101,11 +90,9 @@ public class EditableFoodList extends Composite {
 
         //ABS 3 fields changes
         if ((absListItem1.getElement().getStyle().getDisplay() == "none") && !(absListItem2.getElement().getStyle().getDisplay() == "none"))
-            absListItem2.getElement().getStyle().setDisplay(Display.NONE);
-            getLogger().info("absList2 is hidden ");
+            absListItem2.getElement().getStyle().setDisplay(Display.NONE);;
         if (!(absListItem1.getElement().getStyle().getDisplay() == "none"))
-            absListItem1.getElement().getStyle().setDisplay(Display.NONE); 
-            getLogger().info("absList1 is hidden ");        
+            absListItem1.getElement().getStyle().setDisplay(Display.NONE);        
         focusNew();
         onChange.call(getEnteredItems());
     }
