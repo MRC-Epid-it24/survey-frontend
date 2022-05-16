@@ -35,7 +35,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class EditableFoodList extends Composite {
-    private Logger logger;
 
     private final UnorderedList<EditableFoodListItem> foodList;
     private final EditableFoodListItem newItem;

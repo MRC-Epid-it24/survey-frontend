@@ -2,6 +2,11 @@
     color: #000000;
 }
 
+.intake24-login-header {
+    font: bold;
+    background: #FFF;
+}
+
 .intake24-header h1 {
     color: #000000;
     font-weight: bold;
@@ -64,6 +69,16 @@ button:hover,
     padding: 1px 0px;
 }
 
-.cc-dismiss {
-    background-color: #e00000;
+.cc-dismiss,
+.cc-close {
+    background-color: #e00000 !important;
+}
+
+.cc-link {
+    opacity: 0 !important;
+    color: #FFF !important;
+}
+
+.cc-windows {
+    background-color: #360000 !important;
 }
