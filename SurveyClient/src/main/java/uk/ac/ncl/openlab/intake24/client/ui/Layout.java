@@ -4,6 +4,7 @@ import com.google.gwt.core.client.Scheduler;
 import com.google.gwt.dom.client.Document;
 import com.google.gwt.dom.client.Element;
 import com.google.gwt.dom.client.Style;
+import com.google.gwt.dom.client.Style.Display;
 import com.google.gwt.event.logical.shared.ResizeEvent;
 import com.google.gwt.event.logical.shared.ResizeHandler;
 import com.google.gwt.safehtml.shared.SafeHtmlUtils;
@@ -38,6 +39,7 @@ public class Layout {
 
     private static FlowPanel footerContainer;
     private static FlowPanel footer;
+    private static HTMLPanel privacyAndTermsLinks;
 
     // public static final
 
@@ -138,22 +140,37 @@ public class Layout {
 
         FlowPanel privacyContainer = new FlowPanel();
         privacyContainer.addStyleName("intake24-footer-privacy");
+        privacyAndTermsLinks = new HTMLPanel("ul", "");
+        privacyAndTermsLinks.getElement().getStyle().setPaddingLeft(0, Style.Unit.PX);
 
         Anchor privacyLink = new Anchor(SafeHtmlUtils.fromSafeConstant(messages.privacyLinkLabel()));
         privacyLink.setHref(EmbeddedData.privacyPolicyUrl);
         privacyLink.setTarget("_blank");
-
-        Anchor tocLink = new Anchor(SafeHtmlUtils.fromSafeConstant(messages.tocLinkLabel()));
-        tocLink.setHref(EmbeddedData.termsAndConditionsUrl);
-        tocLink.setTarget("_blank");
+        HTMLPanel privacyLi = new HTMLPanel("li", "");
+        privacyLi.getElement().getStyle().setDisplay(Display.INLINE);
+        privacyLi.add(privacyLink);
+        privacyAndTermsLinks.add(privacyLi);
 
         HTMLPanel spacer = new HTMLPanel("span", "|");
         spacer.getElement().getStyle().setMarginLeft(10, Style.Unit.PX);
         spacer.getElement().getStyle().setMarginRight(10, Style.Unit.PX);
+        HTMLPanel spacerLi = new HTMLPanel("li", "");
+        spacerLi.getElement().getStyle().setDisplay(Display.INLINE);
+        spacerLi.add(spacer);
+        privacyAndTermsLinks.add(spacerLi);
 
-        privacyContainer.add(privacyLink);
-        privacyContainer.add(spacer);
-        privacyContainer.add(tocLink);
+        Anchor tocLink = new Anchor(SafeHtmlUtils.fromSafeConstant(messages.tocLinkLabel()));
+        tocLink.setHref(EmbeddedData.termsAndConditionsUrl);
+        tocLink.setTarget("_blank");
+        HTMLPanel termsLi = new HTMLPanel("li", "");
+        termsLi.getElement().getStyle().setDisplay(Display.INLINE);
+        termsLi.add(tocLink);
+        privacyAndTermsLinks.add(termsLi);
+
+        privacyContainer.add(privacyAndTermsLinks);
+        // privacyContainer.add(privacyLink);
+        // privacyContainer.add(spacer);
+        // privacyContainer.add(tocLink);
 
         if (EmbeddedData.displayLogos) {
             Anchor nuLogo = new Anchor();
