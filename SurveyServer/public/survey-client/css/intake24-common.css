@@ -523,3 +523,21 @@ input[type="radio"], input[type="checkbox"] {
 	margin-bottom: 15px;
 	text-align: center;
 }
+
+@media (max-width: 768px) {
+	.intake24-video-container {
+		position: relative;
+		padding-bottom: 56.25%;
+		width: 100%;
+		height: 0;
+		overflow: hidden;
+	}
+
+	.intake24-video-container iframe {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+	}
+}
