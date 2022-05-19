@@ -167,21 +167,6 @@ public class Layout {
 
         setFooterLinks(privacywidgets);
 
-        // HTMLPanel privacyLi = new HTMLPanel("li", "");
-        // privacyLi.getElement().getStyle().setDisplay(Display.INLINE);
-        // privacyLi.add(privacyLink);
-        // privacyAndTermsLinks.add(privacyLi);
-
-        // HTMLPanel spacerLi = new HTMLPanel("li", "");
-        // spacerLi.getElement().getStyle().setDisplay(Display.INLINE);
-        // spacerLi.add(spacer);
-        // privacyAndTermsLinks.add(spacerLi);
-
-        // HTMLPanel termsLi = new HTMLPanel("li", "");
-        // termsLi.getElement().getStyle().setDisplay(Display.INLINE);
-        // termsLi.add(tocLink);
-        // privacyAndTermsLinks.add(termsLi);
-
         privacyContainer.add(privacyAndTermsLinks);
 
         if (EmbeddedData.displayLogos) {
