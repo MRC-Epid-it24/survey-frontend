@@ -39,7 +39,7 @@ public class Layout {
 
     private static FlowPanel footerContainer;
     private static FlowPanel footer;
-    private static HTMLPanel privacyAndTermsLinks;
+    private static HTMLPanel privacyAndTermsLinks = new HTMLPanel("ul", "");;
 
     // public static final
 
@@ -85,6 +85,15 @@ public class Layout {
         }
 
         navbar.add(navbarLinks);
+    }
+
+    public static void setFooterLinks(Widget... htmlElements) {
+        for (Widget widget : htmlElements) {
+            HTMLPanel panel = new HTMLPanel("li", "");
+            panel.getElement().getStyle().setDisplay(Display.INLINE);
+            panel.add(widget);
+            privacyAndTermsLinks.add(panel);
+        }
     }
 
     public static void setMainContent(Widget content) {
@@ -140,37 +149,40 @@ public class Layout {
 
         FlowPanel privacyContainer = new FlowPanel();
         privacyContainer.addStyleName("intake24-footer-privacy");
-        privacyAndTermsLinks = new HTMLPanel("ul", "");
         privacyAndTermsLinks.getElement().getStyle().setPaddingLeft(0, Style.Unit.PX);
 
         Anchor privacyLink = new Anchor(SafeHtmlUtils.fromSafeConstant(messages.privacyLinkLabel()));
         privacyLink.setHref(EmbeddedData.privacyPolicyUrl);
         privacyLink.setTarget("_blank");
-        HTMLPanel privacyLi = new HTMLPanel("li", "");
-        privacyLi.getElement().getStyle().setDisplay(Display.INLINE);
-        privacyLi.add(privacyLink);
-        privacyAndTermsLinks.add(privacyLi);
 
         HTMLPanel spacer = new HTMLPanel("span", "|");
         spacer.getElement().getStyle().setMarginLeft(10, Style.Unit.PX);
         spacer.getElement().getStyle().setMarginRight(10, Style.Unit.PX);
-        HTMLPanel spacerLi = new HTMLPanel("li", "");
-        spacerLi.getElement().getStyle().setDisplay(Display.INLINE);
-        spacerLi.add(spacer);
-        privacyAndTermsLinks.add(spacerLi);
 
         Anchor tocLink = new Anchor(SafeHtmlUtils.fromSafeConstant(messages.tocLinkLabel()));
         tocLink.setHref(EmbeddedData.termsAndConditionsUrl);
         tocLink.setTarget("_blank");
-        HTMLPanel termsLi = new HTMLPanel("li", "");
-        termsLi.getElement().getStyle().setDisplay(Display.INLINE);
-        termsLi.add(tocLink);
-        privacyAndTermsLinks.add(termsLi);
+
+        Widget[] privacywidgets = { privacyLink, spacer, tocLink };
+
+        setFooterLinks(privacywidgets);
+
+        // HTMLPanel privacyLi = new HTMLPanel("li", "");
+        // privacyLi.getElement().getStyle().setDisplay(Display.INLINE);
+        // privacyLi.add(privacyLink);
+        // privacyAndTermsLinks.add(privacyLi);
+
+        // HTMLPanel spacerLi = new HTMLPanel("li", "");
+        // spacerLi.getElement().getStyle().setDisplay(Display.INLINE);
+        // spacerLi.add(spacer);
+        // privacyAndTermsLinks.add(spacerLi);
+
+        // HTMLPanel termsLi = new HTMLPanel("li", "");
+        // termsLi.getElement().getStyle().setDisplay(Display.INLINE);
+        // termsLi.add(tocLink);
+        // privacyAndTermsLinks.add(termsLi);
 
         privacyContainer.add(privacyAndTermsLinks);
-        // privacyContainer.add(privacyLink);
-        // privacyContainer.add(spacer);
-        // privacyContainer.add(tocLink);
 
         if (EmbeddedData.displayLogos) {
             Anchor nuLogo = new Anchor();
