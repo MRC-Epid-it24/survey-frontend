@@ -17,9 +17,13 @@ limitations under the License.
 */
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 name := "intake24-survey-site-abs"
 =======
 val organization = "uk.ac.ncl.openlab.intake24"
+=======
+name := "intake24-survey-site-abs"
+>>>>>>> ABS_05.2022
 
 name := "intake24-survey-site"
 >>>>>>> support/rhel
@@ -103,6 +107,9 @@ lazy val root = (project in file(".")).enablePlugins(PlayScala, SystemdPlugin, J
 //     rpmLicense := Some("MIT"),
 //     rpmGroup := Some("Applications/intake24")
 //   )
+<<<<<<< HEAD
 =======
 lazy val root = (project in file(".")).settings(packageManagerSettings: _*).enablePlugins(PlayScala, SystemdPlugin, JDebPackaging, RpmPlugin)
 >>>>>>> support/rhel
+=======
+>>>>>>> ABS_05.2022

@@ -4,6 +4,7 @@ import com.google.gwt.core.client.Scheduler;
 import com.google.gwt.dom.client.Document;
 import com.google.gwt.dom.client.Element;
 import com.google.gwt.dom.client.Style;
+import com.google.gwt.dom.client.Style.Display;
 import com.google.gwt.event.logical.shared.ResizeEvent;
 import com.google.gwt.event.logical.shared.ResizeHandler;
 import com.google.gwt.safehtml.shared.SafeHtmlUtils;
@@ -38,6 +39,7 @@ public class Layout {
 
     private static FlowPanel footerContainer;
     private static FlowPanel footer;
+    private static HTMLPanel privacyAndTermsLinks = new HTMLPanel("ul", "");;
 
     // public static final
 
@@ -83,6 +85,15 @@ public class Layout {
         }
 
         navbar.add(navbarLinks);
+    }
+
+    public static void setFooterLinks(Widget... htmlElements) {
+        for (Widget widget : htmlElements) {
+            HTMLPanel panel = new HTMLPanel("li", "");
+            panel.getElement().getStyle().setDisplay(Display.INLINE);
+            panel.add(widget);
+            privacyAndTermsLinks.add(panel);
+        }
     }
 
     public static void setMainContent(Widget content) {
@@ -138,22 +149,25 @@ public class Layout {
 
         FlowPanel privacyContainer = new FlowPanel();
         privacyContainer.addStyleName("intake24-footer-privacy");
+        privacyAndTermsLinks.getElement().getStyle().setPaddingLeft(0, Style.Unit.PX);
 
         Anchor privacyLink = new Anchor(SafeHtmlUtils.fromSafeConstant(messages.privacyLinkLabel()));
         privacyLink.setHref(EmbeddedData.privacyPolicyUrl);
         privacyLink.setTarget("_blank");
 
-        Anchor tocLink = new Anchor(SafeHtmlUtils.fromSafeConstant(messages.tocLinkLabel()));
-        tocLink.setHref(EmbeddedData.termsAndConditionsUrl);
-        tocLink.setTarget("_blank");
-
         HTMLPanel spacer = new HTMLPanel("span", "|");
         spacer.getElement().getStyle().setMarginLeft(10, Style.Unit.PX);
         spacer.getElement().getStyle().setMarginRight(10, Style.Unit.PX);
 
-        privacyContainer.add(privacyLink);
-        privacyContainer.add(spacer);
-        privacyContainer.add(tocLink);
+        Anchor tocLink = new Anchor(SafeHtmlUtils.fromSafeConstant(messages.tocLinkLabel()));
+        tocLink.setHref(EmbeddedData.termsAndConditionsUrl);
+        tocLink.setTarget("_blank");
+
+        Widget[] privacywidgets = { privacyLink, spacer, tocLink };
+
+        setFooterLinks(privacywidgets);
+
+        privacyContainer.add(privacyAndTermsLinks);
 
         if (EmbeddedData.displayLogos) {
             Anchor nuLogo = new Anchor();

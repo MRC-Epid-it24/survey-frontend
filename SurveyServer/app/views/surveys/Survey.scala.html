@@ -4,7 +4,8 @@
         privacyPolicyURL: String,
         termsAndConditionsURL: String,
         displayLogos: Boolean,
-        gaTrackingCode: Option[String])
+        gaTrackingCode: Option[String],
+        additionalCss: Seq[String])
 
 <!--
 This file is part of Intake24.
@@ -34,7 +35,7 @@ http://www.nationalarchives.gov.uk/doc/open-government-licence/
 
 <!doctype html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
     <head>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
@@ -57,7 +58,7 @@ http://www.nationalarchives.gov.uk/doc/open-government-licence/
             <meta name="intake24:originatingUrl" content="@parameters.originatingURL.head"/>
         }
 
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
         <meta name="apple-mobile-web-app-capable" content="yes">
 
         <link type="text/css" rel="stylesheet" href="@routes.Assets.at("survey-client/css/intake24-common.css")" />
@@ -73,6 +74,10 @@ http://www.nationalarchives.gov.uk/doc/open-government-licence/
 
         <link type="text/css" rel="stylesheet" href="@routes.Assets.at("lib/survey-client/css/shepherd/shepherd-theme-arrows.css")" />
         <link type="text/css" rel="stylesheet" href="@routes.Assets.at("lib/font-awesome/css/all.css")" />
+
+        @for(href <- additionalCss) {
+        <link type="text/css" rel="stylesheet" href="@href" />
+        }
 
         <script src="@routes.Assets.at("lib/jquery/jquery.min.js")"></script>
         <script src="@routes.Assets.at("lib/survey-client/js/shepherd/shepherd.min.js")"></script>
@@ -122,19 +127,22 @@ http://www.nationalarchives.gov.uk/doc/open-government-licence/
         style="position: absolute;
             width: 0;
             height: 0;
-            border: 0"></iframe>
+            border: 0" title="Recall history frame"></iframe>
 
-        <noscript>
+        <noscript 
+            style="color: #A80000;
+                background-color: #FFF;">
             <div
             style="width: 22em;
                 position: absolute;
                 left: 50%;
                 margin-left: -11em;
-                color: red;
-                background-color: white;
-                border: 1px solid red;
+                color: #A80000;
+                background-color: #FFF;
+                border: 1px solid #A80000;
                 padding: 4px;
-                font-family: sans-serif">
+                font-family: sans-serif"
+                name="No JavaScript Message">
                 Your web browser must have JavaScript enabled in order for this application to display correctly.</div>
         </noscript>
 
@@ -167,6 +175,19 @@ http://www.nationalarchives.gov.uk/doc/open-government-licence/
       }', 'auto');
                     ga('set', 'anonymizeIp', true);
                     ga('send', 'pageview', location.pathname);
+            </script>
+            <script>
+                function docReady(fn) {
+                    if (document.readyState === "complete" || document.readyState === "interactive") {
+                        setTimeout(fn, 1);
+                    } else {
+                        setTimeout(fn, 3500);
+                    }
+                }
+
+                docReady(function() {
+                    var hiddenFrame = document.getElementById("survey").setAttribute('title', 'hidden iFrame');
+                });
             </script>
         }
 

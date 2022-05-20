@@ -33,5 +33,5 @@ public class TutorialVideo {
     private static final CommonMessages commonMessages = CommonMessages.Util.getInstance();
     public static final String url = commonMessages.walkthroughYouTubeUrl();
     public static final String embedUrl = commonMessages.walkthroughYouTubeEmbedUrl();
-    public static final String embedHTML = "<iframe width=\"560\" height=\"315\" src=\"" + embedUrl + "\" frameborder=\"0\" allowfullscreen></iframe>";
+    public static final String embedHTML = "<iframe width=\"560\" height=\"315\" src=\"" + embedUrl + "\" title=\"Recall Video Instructions\" frameborder=\"0\" allowfullscreen></iframe>";
 }

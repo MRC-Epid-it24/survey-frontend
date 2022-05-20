@@ -60,7 +60,7 @@ public class EditableFoodListItem extends Composite {
 	
 	public void showPlaceholderText() {
 		textBox.setText(messages.editMeal_listItemPlaceholder());
-		textBox.addStyleName("intake24-food-list-textbox-placeholder");
+		// textBox.addStyleName("intake24-food-list-textbox-placeholder");
 	}
 	
 	public FoodEntry mkFoodEntry(final boolean markAsDrink) {

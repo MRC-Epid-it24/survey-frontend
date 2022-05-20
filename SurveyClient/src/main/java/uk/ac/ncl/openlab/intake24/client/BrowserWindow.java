@@ -19,7 +19,11 @@ public class BrowserWindow {
 		$wnd.alert(msg);
 	}-*/;
 <<<<<<< HEAD
+<<<<<<< HEAD
 }
 =======
 }
 >>>>>>> support/rhel
+=======
+}
+>>>>>>> ABS_05.2022

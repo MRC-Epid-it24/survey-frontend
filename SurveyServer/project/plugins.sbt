@@ -16,7 +16,9 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-resolvers += "Typesafe repository" at "https://dl.bintray.com/typesafe/maven-releases/"
+/*Fixing issue with the Bintray servers*/
+resolvers += "Typesafe repository" at "https://repo.typesafe.com/typesafe/maven-releases/"
+resolvers += "Typesafe Ivy repository" at "https://repo.typesafe.com/typesafe/ivy-releases/"
 
 addSbtPlugin("com.typesafe.play" % "sbt-plugin" % "2.7.9")
 
@@ -29,3 +31,5 @@ addSbtPlugin("org.irundaia.sbt" % "sbt-sassify" % "1.5.1")
 libraryDependencies ++= Seq(
   "org.vafer" % "jdeb" % "1.5" artifacts (Artifact("jdeb", "jar", "jar"))
 )
+// https://mvnrepository.com/artifact/org.sonatype.plexus/plexus-cipher
+libraryDependencies += "org.sonatype.plexus" % "plexus-cipher" % "1.4"

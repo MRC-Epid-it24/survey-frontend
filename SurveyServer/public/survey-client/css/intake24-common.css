@@ -46,7 +46,7 @@ body {
 }
 
 a {
-	color: #428bca;
+	color: #0760ae;
 	text-decoration: none;
 }
 
@@ -210,8 +210,8 @@ input[type="radio"], input[type="checkbox"] {
 /* Colored buttons styles */
 
 .intake24-green-button {
-	background-color: #57a957;
-	border-color: #57a957;
+	background-color: #238802;
+	border-color: #238802;
 }
 
 .intake24-green-button:hover {
@@ -248,8 +248,8 @@ input[type="radio"], input[type="checkbox"] {
 /* */
 
 .intake24-green-button[disabled], .intake24-green-button[disabled]:hover {
-	border-color: #57A957;
-	background: #57A957;
+	border-color: #238802;
+	background: #238802;
 	color: #D2FFD2;
 }
 
@@ -333,7 +333,7 @@ input[type="radio"], input[type="checkbox"] {
 }
 
 .intake24-header h1 {
-	color: #db3100;
+	color: #b32700;
 	display: inline-block;
 	font-size: 26px;
 	font-weight: 100;
@@ -393,7 +393,7 @@ input[type="radio"], input[type="checkbox"] {
 }
 
 .intake24-navbar a {
-	color: #db3100;
+	color: #b32700;
 	font-size: 14px;
 	height: 36px;
 	line-height: 36px;
@@ -522,4 +522,22 @@ input[type="radio"], input[type="checkbox"] {
 	font-size: 100%;
 	margin-bottom: 15px;
 	text-align: center;
+}
+
+@media (max-width: 768px) {
+	.intake24-video-container {
+		position: relative;
+		padding-bottom: 56.25%;
+		width: 100%;
+		height: 0;
+		overflow: hidden;
+	}
+
+	.intake24-video-container iframe {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+	}
 }
