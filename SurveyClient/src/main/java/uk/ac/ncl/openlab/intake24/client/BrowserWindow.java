@@ -18,12 +18,5 @@ public class BrowserWindow {
 	public static native void alert(String msg) /*-{
 		$wnd.alert(msg);
 	}-*/;
-<<<<<<< HEAD
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> support/rhel
-=======
-}
->>>>>>> ABS_05.2022
+
