@@ -69,6 +69,7 @@ http://www.nationalarchives.gov.uk/doc/open-government-licence/
 	<set-property name="compiler.useSourceMaps" value="true"/>
 
 	<extend-property name="locale" values="en_GB" />
+	<extend-property name="locale" values="en_AU" />
 	<extend-property name="locale" values="pt_PT" />
 	<extend-property name="locale" values="da_DK" />
 	<extend-property name="locale" values="ar_AE" />
@@ -77,5 +78,5 @@ http://www.nationalarchives.gov.uk/doc/open-government-licence/
 
 	<!-- required to get rid of default locale,
          see  https://github.com/gwtproject/gwt/issues/5768 -->
-	<set-property name="locale" value="en_GB, pt_PT, da_DK, ar_AE" />
+	<set-property name="locale" value="en_GB, pt_PT, da_DK, ar_AE, en_AU" />
 </module>

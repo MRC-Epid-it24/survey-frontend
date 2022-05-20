@@ -39,9 +39,12 @@ class Surveys @Inject()(config: Configuration, ws: WSClient) extends Controller 
       response =>
         response.status match {
           case 200 => {
+
+            val additionalCss = config.getOptional[Seq[String]](s"intake24.survey.${surveyId}.additionalCss").getOrElse(Seq())
+
             Json.fromJson[PublicSurveyParameters](Json.parse(response.body)) match {
               case JsSuccess(params, _) => Ok(Survey(surveyId, params, externalApiBaseUrl, privacyPolicyURL,
-                termsAndConditionsURL, displayLogos, gaTrackingCode))
+                termsAndConditionsURL, displayLogos, gaTrackingCode, additionalCss))
               case JsError(p) =>
                 Logger.error("Could not parse API server public survey parameters response")
                 Logger.error("Response body: " + response.body)

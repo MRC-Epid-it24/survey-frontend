@@ -32,7 +32,7 @@ http://www.nationalarchives.gov.uk/doc/open-government-licence/
 }
 
 .intake24-meals-panel-header {
-	color: #db3100;
+	color: #b32700;
 	font-size: 15px;
 	font-weight: bold;
 	line-height: 22px;
@@ -125,14 +125,14 @@ http://www.nationalarchives.gov.uk/doc/open-government-licence/
 #intake24-meals-panel button {
 	background-color: #FFF;
 	border-radius: 0px;
-	color: #57a957;
+	color: #238802;
 	display: block;
 	margin: 0px;
 	padding: 14px 12px;
 	width: 100%;
 }
 #intake24-meals-panel button:hover {
-	background-color: #57a957;
+	background-color: #238802;
 	color: #FFF;
 }
 

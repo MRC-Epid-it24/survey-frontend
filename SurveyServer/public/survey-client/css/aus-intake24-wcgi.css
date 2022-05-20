@@ -1,0 +1,88 @@
+.intake24-login-header h1 {
+    color: #000000;
+}
+
+.intake24-login-header {
+    font: bold;
+    background: #FFF;
+}
+
+.intake24-header {
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
+.intake24-header h1 {
+    color: #000000;
+    font-weight: bold;
+}
+
+.intake24-navbar a {
+    color: #b32700;
+}
+
+#intake4-time-question-skip-button {
+    background-color: #238802;
+    border-color: #238802;
+}
+
+.intake24-food-list-item {
+    width: 50%;
+    min-width: 300px;
+}
+
+.intake24-prompt-text ul {
+    list-style: disc;
+    margin-left: 15px;
+}
+
+.intake24-button,
+button,
+.counterIncButton,
+.counterDecButton {
+    background-color: #747272;
+}
+
+.intake24-button:hover,
+button:hover,
+.counterIncButton:hover,
+.counterDecButton:hover {
+    background-color: #484848;
+}
+
+#letters>span {
+    color: #747272
+}
+
+.intake24-green-button {
+    background-color: #238802;
+    border-color: #238802;
+}
+
+.intake24-green-button:hover {
+    background-color: #185c01;
+    border-color: #185c01;
+}
+
+.intake24-food-list-delete-button,
+.intake24-food-list-accept-button {
+    background-color: transparent;
+}
+
+.intake24-food-browser-food,
+.intake24-food-browser-category {
+    padding: 1px 0px;
+}
+
+.cc-dismiss,
+.cc-close {
+    background-color: #e00000 !important;
+}
+
+.cc-link {
+    opacity: 0 !important;
+    color: #FFF !important;
+}
+
+.cc-windows {
+    background-color: #360000 !important;
+}
