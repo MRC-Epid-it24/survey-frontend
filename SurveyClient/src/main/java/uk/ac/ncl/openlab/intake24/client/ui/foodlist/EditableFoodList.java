@@ -117,9 +117,11 @@ public class EditableFoodList extends Composite {
         newItem = new EditableFoodListItem(Option.<FoodEntry>none());
         newItem.addStyleName("intake24-food-list-new-item");
         newItem.textBox.addStyleName("intake24-food-list-textbox-new-item");
+        newItem.textBox.getElement().setAttribute("name", "New food item input field");
 
         newItem.deleteButton.removeStyleName("intake24-food-list-delete-button");
         newItem.deleteButton.addStyleName("intake24-food-list-accept-button");
+        newItem.deleteButton.getElement().setAttribute("name", "Add new food item button");
         newItem.deleteButton.addClickHandler(new ClickHandler() {
             @Override
             public void onClick(ClickEvent event) {
@@ -142,12 +144,14 @@ public class EditableFoodList extends Composite {
         absListItem1.addStyleName("intake24-food-list-new-item");
         absListItem1.textBox.addStyleName("intake24-food-list-textbox-new-item");
         absListItem1.textBox.getElement().setAttribute("disabled", "disabled");
+        absListItem1.textBox.getElement().setAttribute("name", "disabled new food input field");
         absListItem1.textBox.setText(" ");
 
         absListItem2 = new EditableFoodListItem(Option.<FoodEntry>none());
         absListItem2.addStyleName("intake24-food-list-new-item");
         absListItem2.textBox.addStyleName("intake24-food-list-textbox-new-item");
         absListItem2.textBox.getElement().setAttribute("disabled", "disabled");
+        absListItem2.textBox.getElement().setAttribute("name", "disabled new food input field");
         absListItem2.textBox.setText(" ");
 
         UnorderedList<EditableFoodListItem> newItemContainer = new UnorderedList<EditableFoodListItem>();
