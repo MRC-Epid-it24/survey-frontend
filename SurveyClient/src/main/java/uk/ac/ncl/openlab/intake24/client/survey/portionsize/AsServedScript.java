@@ -37,6 +37,7 @@ import uk.ac.ncl.openlab.intake24.client.survey.prompts.simple.WeightFactorSetti
 
 import static uk.ac.ncl.openlab.intake24.client.survey.PromptUtil.setAdditionalField;
 import static uk.ac.ncl.openlab.intake24.client.survey.PromptUtil.withBackLink;
+import static uk.ac.ncl.openlab.intake24.client.survey.PromptUtil.withHeader;
 import static uk.ac.ncl.openlab.intake24.client.survey.portionsize.PortionSizeScriptUtil.*;
 
 public class AsServedScript implements PortionSizeScript {
@@ -51,6 +52,7 @@ public class AsServedScript implements PortionSizeScript {
     }
 
     public Option<SimplePrompt<UpdateFunc>> nextPrompt(PMap<String, String> data, FoodData foodData) {
+        String escapedFoodDesc = SafeHtmlUtils.htmlEscape(foodData.description());
         boolean hasLeftoverImages = !leftoversImages.isEmpty();
 
 		/*Logger log = Logger.getLogger("AsServedScript");
@@ -64,10 +66,12 @@ public class AsServedScript implements PortionSizeScript {
         if (!data.containsKey("servingWeight")) {
             SimplePrompt<UpdateFunc> portionSizePrompt =
                     withBackLink(
+                        withHeader(
                             asServedPrompt(servingImages, PromptMessages.INSTANCE.asServed_servedLessButtonLabel(), PromptMessages.INSTANCE.asServed_servedMoreButtonLabel(),
                                     PromptMessages.INSTANCE.asServed_servedContinueButtonLabel(), "servingChoiceIndex", "servingImage", "servingWeight",
                                     Option.some(new WeightFactorSettings("servingWeightFactor", true, true)), false,
-                                    defaultServingSizePrompt(foodData.description()))
+                                    defaultServingSizePrompt(foodData.description())), escapedFoodDesc
+                        )
                     );
 
             if (!hasLeftoverImages)
@@ -76,14 +80,25 @@ public class AsServedScript implements PortionSizeScript {
                 return Option.some(portionSizePrompt);
         } else if (!data.containsKey("leftoversWeight") && hasLeftoverImages) {
             if (!data.containsKey("leftovers"))
-                return Option.some(withBackLink(
-                        yesNoPromptZeroField(SafeHtmlUtils.fromSafeConstant(PromptMessages.INSTANCE.asServed_leftoversQuestionPromptText(SafeHtmlUtils.htmlEscape(foodData.description().toLowerCase()))),
-                                PromptMessages.INSTANCE.yesNoQuestion_defaultYesLabel(), PromptMessages.INSTANCE.yesNoQuestion_defaultNoLabel(), "leftovers", "leftoversWeight")));
+                return Option.some(
+                    withBackLink(
+                        withHeader(
+                            yesNoPromptZeroField(SafeHtmlUtils.fromSafeConstant(PromptMessages.INSTANCE.asServed_leftoversQuestionPromptText(SafeHtmlUtils.htmlEscape(foodData.description().toLowerCase()))),
+                                    PromptMessages.INSTANCE.yesNoQuestion_defaultYesLabel(), PromptMessages.INSTANCE.yesNoQuestion_defaultNoLabel(), "leftovers", "leftoversWeight"), escapedFoodDesc
+                        )
+                    )
+                );
             else
-                return Option.some(withBackLink(asServedPrompt(leftoversImages.getOrDie(),
-                        PromptMessages.INSTANCE.asServed_leftLessButtonLabel(), PromptMessages.INSTANCE.asServed_leftMoreButtonLabel(), PromptMessages.INSTANCE.asServed_leftContinueButtonLabel(), "leftoversChoiceIndex",
-                        "leftoversImage", "leftoversWeight", Option.some(new WeightFactorSettings("leftoversWeightFactor", true, true)), true,
-                        defaultLeftoversPrompt(foodData.description()))));
+                return Option.some(
+                    withBackLink(
+                        withHeader(
+                            asServedPrompt(leftoversImages.getOrDie(),
+                            PromptMessages.INSTANCE.asServed_leftLessButtonLabel(), PromptMessages.INSTANCE.asServed_leftMoreButtonLabel(), PromptMessages.INSTANCE.asServed_leftContinueButtonLabel(), "leftoversChoiceIndex",
+                            "leftoversImage", "leftoversWeight", Option.some(new WeightFactorSettings("leftoversWeightFactor", true, true)), true,
+                            defaultLeftoversPrompt(foodData.description())), escapedFoodDesc
+                        )
+                    )
+                );
         } else
             return done();
     }
