@@ -39,6 +39,7 @@ import uk.ac.ncl.openlab.intake24.client.survey.prompts.messages.PromptMessages;
 import java.util.List;
 
 import static uk.ac.ncl.openlab.intake24.client.survey.PromptUtil.withBackLink;
+import static uk.ac.ncl.openlab.intake24.client.survey.PromptUtil.withHeader;
 import static uk.ac.ncl.openlab.intake24.client.survey.portionsize.PortionSizeScriptUtil.*;
 
 public class StandardPortionScript implements PortionSizeScript {
@@ -55,43 +56,58 @@ public class StandardPortionScript implements PortionSizeScript {
     public Option<SimplePrompt<UpdateFunc>> mkQuantityPrompt(PMap<String, String> data, final int unitChoice, String foodDesc) {
         String message;
         StandardUnitDef unit = units.get(unitChoice);
+        String escapedFoodDesc = SafeHtmlUtils.htmlEscape(foodDesc);
 
         if (unit.omitFoodDesc)
             message = messages.standardUnit_quantityPromptText_omitFood(unitNames.getString(unit.name + "_how_many"));
         else
-            message = messages.standardUnit_quantityPromptText_includeFood(unitNames.getString(unit.name + "_how_many"), SafeHtmlUtils.htmlEscape(foodDesc.toLowerCase()));
+            message = messages.standardUnit_quantityPromptText_includeFood(unitNames.getString(unit.name + "_how_many"), escapedFoodDesc.toLowerCase());
 
 
-        return Option.some(withBackLink(PromptUtil.map(
-                quantityPrompt(SafeHtmlUtils.fromSafeConstant(message), messages.standardUnit_quantityContinueButtonLabel(), "quantity"),
-                new Function1<UpdateFunc, UpdateFunc>() {
-                    @Override
-                    public UpdateFunc apply(final UpdateFunc f) {
-                        return new UpdateFunc() {
+        return Option.some(
+            withBackLink(
+                withHeader(
+                    PromptUtil.map(
+                        quantityPrompt(SafeHtmlUtils.fromSafeConstant(message), messages.standardUnit_quantityContinueButtonLabel(), "quantity"),
+                        new Function1<UpdateFunc, UpdateFunc>() {
                             @Override
-                            public PMap<String, String> apply(PMap<String, String> argument) {
-                                PMap<String, String> a = f.apply(argument);
-                                return a.plus("servingWeight", Double.toString(units.get(unitChoice).weight * Double.parseDouble(a.get("quantity")))).plus(
-                                        "leftoversWeight", Double.toString(0));
+                            public UpdateFunc apply(final UpdateFunc f) {
+                                return new UpdateFunc() {
+                                    @Override
+                                    public PMap<String, String> apply(PMap<String, String> argument) {
+                                        PMap<String, String> a = f.apply(argument);
+                                        return a.plus("servingWeight", Double.toString(units.get(unitChoice).weight * Double.parseDouble(a.get("quantity")))).plus(
+                                                "leftoversWeight", Double.toString(0));
+                                    }
+                                };
                             }
-                        };
-                    }
-                })));
+                        }
+                    ), escapedFoodDesc
+                )
+            )
+        );
     }
 
     @Override
     public Option<SimplePrompt<UpdateFunc>> nextPrompt(PMap<String, String> data, FoodData foodData) {
+        String escapedFoodDesc = SafeHtmlUtils.htmlEscape(foodData.description());
+
         if (data.containsKey("servingWeight"))
             return done();
         else if (!data.containsKey("unit-choice")) {
             if (units.size() > 1)
-                return Option.some(withBackLink(standardUnitChoicePrompt(
-                        SafeHtmlUtils.fromSafeConstant(messages.standardUnit_unitChoicePromptText()), messages.standardUnit_unitChoiceContinueButtonLabel(), units, new Function1<StandardUnitDef, String>() {
+                return Option.some(
+                    withBackLink(
+                        withHeader(
+                            standardUnitChoicePrompt(SafeHtmlUtils.fromSafeConstant(messages.standardUnit_unitChoicePromptText(escapedFoodDesc)), messages.standardUnit_unitChoiceContinueButtonLabel(), units, new Function1<StandardUnitDef, String>() {
                             @Override
                             public String apply(StandardUnitDef argument) {
                                 return messages.standardUnit_choiceLabel(SafeHtmlUtils.htmlEscape(unitNames.getString(argument.name + "_estimate_in")));
                             }
-                        }, "unit-choice")));
+                            }, "unit-choice"), escapedFoodDesc
+                        )
+                    )
+                );
             else
                 return mkQuantityPrompt(data, 0, foodData.description());
         } else

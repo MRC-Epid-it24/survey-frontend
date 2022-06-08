@@ -546,7 +546,7 @@ public interface PromptMessages extends Messages {
 
     public String standardUnit_quantityContinueButtonLabel();
 
-    public String standardUnit_unitChoicePromptText();
+    public String standardUnit_unitChoicePromptText(String escapedFoodDesc);
 
     public String standardUnit_unitChoiceContinueButtonLabel();
 
