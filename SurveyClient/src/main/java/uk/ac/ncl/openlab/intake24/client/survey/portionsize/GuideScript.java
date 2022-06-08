@@ -60,7 +60,7 @@ public class GuideScript implements PortionSizeScript {
             return Option.some(PromptUtil.map(
                     withBackLink(
                         withHeader(
-                            guidePrompt(SafeHtmlUtils.fromSafeConstant(messages.guide_choicePromptText()), guideDef.imageMap.toImageMap(), "objectIndex", "imageUrl"), escapedFoodDesc
+                            guidePrompt(SafeHtmlUtils.fromSafeConstant(messages.guide_choicePromptText(escapedFoodDesc.toLowerCase())), guideDef.imageMap.toImageMap(), "objectIndex", "imageUrl"), escapedFoodDesc
                         )
                     ),
                     new Function1<UpdateFunc, UpdateFunc>() {
@@ -80,7 +80,7 @@ public class GuideScript implements PortionSizeScript {
 
             return Option.some(
                 withBackLink(
-                    withHeader(PromptUtil.map(quantityPrompt(SafeHtmlUtils.fromSafeConstant(messages.guide_quantityPromptText(escapedFoodDesc)),
+                    withHeader(PromptUtil.map(quantityPrompt(SafeHtmlUtils.fromSafeConstant(messages.guide_quantityPromptText(escapedFoodDesc.toLowerCase())),
                                 messages.guide_quantityContinueButtonLabel(), "quantity"), new Function1<UpdateFunc, UpdateFunc>() {
                             @Override
                             public UpdateFunc apply(final UpdateFunc f) {
