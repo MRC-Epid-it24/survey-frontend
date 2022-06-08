@@ -38,6 +38,7 @@ import uk.ac.ncl.openlab.intake24.client.survey.SimplePrompt;
 import uk.ac.ncl.openlab.intake24.client.survey.prompts.messages.PromptMessages;
 
 import static uk.ac.ncl.openlab.intake24.client.survey.PromptUtil.withBackLink;
+import static uk.ac.ncl.openlab.intake24.client.survey.PromptUtil.withHeader;
 import static uk.ac.ncl.openlab.intake24.client.survey.portionsize.PortionSizeScriptUtil.*;
 
 public class GuideScript implements PortionSizeScript {
@@ -53,9 +54,15 @@ public class GuideScript implements PortionSizeScript {
 
     @Override
     public Option<SimplePrompt<UpdateFunc>> nextPrompt(PMap<String, String> data, FoodData foodData) {
+        String escapedFoodDesc = SafeHtmlUtils.htmlEscape(foodData.description());
+
         if (!data.containsKey("objectWeight")) {
             return Option.some(PromptUtil.map(
-                    withBackLink(guidePrompt(SafeHtmlUtils.fromSafeConstant(messages.guide_choicePromptText()), guideDef.imageMap.toImageMap(), "objectIndex", "imageUrl")),
+                    withBackLink(
+                        withHeader(
+                            guidePrompt(SafeHtmlUtils.fromSafeConstant(messages.guide_choicePromptText()), guideDef.imageMap.toImageMap(), "objectIndex", "imageUrl"), escapedFoodDesc
+                        )
+                    ),
                     new Function1<UpdateFunc, UpdateFunc>() {
                         @Override
                         public UpdateFunc apply(final UpdateFunc f) {
@@ -71,20 +78,25 @@ public class GuideScript implements PortionSizeScript {
 
         } else if (!data.containsKey("quantity")) {
 
-            return Option.some(withBackLink(PromptUtil.map(quantityPrompt(SafeHtmlUtils.fromSafeConstant(messages.guide_quantityPromptText()),
-                    messages.guide_quantityContinueButtonLabel(), "quantity"), new Function1<UpdateFunc, UpdateFunc>() {
-                @Override
-                public UpdateFunc apply(final UpdateFunc f) {
-                    return new UpdateFunc() {
-                        @Override
-                        public PMap<String, String> apply(PMap<String, String> argument) {
-                            PMap<String, String> a = f.apply(argument);
-                            return a.plus("servingWeight", Double.toString(Double.parseDouble(a.get("objectWeight")) * Double.parseDouble(a.get("quantity"))))
-                                    .plus("leftoversWeight", Double.toString(0));
-                        }
-                    };
-                }
-            })));
+            return Option.some(
+                withBackLink(
+                    withHeader(PromptUtil.map(quantityPrompt(SafeHtmlUtils.fromSafeConstant(messages.guide_quantityPromptText(escapedFoodDesc)),
+                                messages.guide_quantityContinueButtonLabel(), "quantity"), new Function1<UpdateFunc, UpdateFunc>() {
+                            @Override
+                            public UpdateFunc apply(final UpdateFunc f) {
+                                return new UpdateFunc() {
+                                    @Override
+                                    public PMap<String, String> apply(PMap<String, String> argument) {
+                                        PMap<String, String> a = f.apply(argument);
+                                        return a.plus("servingWeight", Double.toString(Double.parseDouble(a.get("objectWeight")) * Double.parseDouble(a.get("quantity"))))
+                                                .plus("leftoversWeight", Double.toString(0));
+                                    }
+                                };
+                            }
+                        }), escapedFoodDesc
+                    )
+                )
+            );
         } else
             return done();
     }
