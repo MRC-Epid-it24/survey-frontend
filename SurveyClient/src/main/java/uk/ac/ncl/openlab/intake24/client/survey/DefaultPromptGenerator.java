@@ -20,6 +20,8 @@ import java.util.logging.Logger;
 
 import static org.workcraft.gwt.shared.client.CollectionUtils.*;
 
+import uk.ac.ncl.openlab.intake24.client.BrowserWindow;
+
 public class DefaultPromptGenerator<T, Op> implements PromptGenerator<T, Op> {
     private final Logger log = Logger.getLogger("DefaultPromptGenerator");
     private final PVector<WithPriority<PromptRule<T, Op>>> sortedRules;
@@ -60,6 +62,7 @@ public class DefaultPromptGenerator<T, Op> implements PromptGenerator<T, Op> {
             return new Option.None<WithPriority<Prompt<T, Op>>>();
         } else {
             log.fine("Chosen prompt: " + applicable.get(0));
+            BrowserWindow.postMessage("Switched to the next prompt: " + applicable.get(0));
             return new Option.Some<WithPriority<Prompt<T, Op>>>(applicable.get(0));
         }
     }

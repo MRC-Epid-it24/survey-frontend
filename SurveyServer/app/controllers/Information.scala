@@ -14,10 +14,11 @@ class Information @Inject()(customContent: CustomContent, config: Configuration)
   private val gaTrackingCode = config.getString("intake24.ga.trackingCode")
   private val supportEmail = config.getString("intake24.supportEmail").get
   private val videoURL = config.getString("intake24.videoURL").get
+  private val infoPageLocaleDisclaimer = config.getString("intake24.infoPageLocaleDisclaimer")
 
 
   private def renderInfoPage(title: String, content: Html): Html = {
-    InfoPageLayout(title, content, customContent.footer(), videoURL, gaTrackingCode)
+    InfoPageLayout(title, content, customContent.footer(), videoURL, gaTrackingCode, infoPageLocaleDisclaimer)
   }
 
   def landing = Action {
