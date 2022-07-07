@@ -53,12 +53,14 @@ button:hover,
     color: #747272
 }
 
+#intake24-food-browser-skip-food-button,
 .intake24-green-button {
     background-color: #238802;
     border-color: #238802;
 }
 
-.intake24-green-button:hover {
+.intake24-green-button:hover,
+.intake24-food-browser-skip-food-button:hover {
     background-color: #185c01;
     border-color: #185c01;
 }
@@ -71,18 +73,4 @@ button:hover,
 .intake24-food-browser-food,
 .intake24-food-browser-category {
     padding: 1px 0px;
-}
-
-.cc-dismiss,
-.cc-close {
-    background-color: #e00000 !important;
-}
-
-.cc-link {
-    opacity: 0 !important;
-    color: #FFF !important;
-}
-
-.cc-windows {
-    background-color: #360000 !important;
 }

@@ -389,6 +389,8 @@ public class FoodBrowser extends Composite {
             }
         });
 
+        buttonsPanel.add(cantFindButton);
+
         skipFoodHandler.accept(new Option.SideEffectVisitor<SkipFoodHandler>() {
 
             @Override
@@ -411,8 +413,6 @@ public class FoodBrowser extends Composite {
                 skipFoodButton = null;
             }
         });
-
-        buttonsPanel.add(cantFindButton);
 
         ui.add(div);
 
