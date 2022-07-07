@@ -12,11 +12,13 @@ package uk.ac.ncl.openlab.intake24.client.ui.foodlist;
 
 import com.google.gwt.core.client.Scheduler;
 import com.google.gwt.core.client.Scheduler.ScheduledCommand;
+import com.google.gwt.dom.client.Style.Display;
 import com.google.gwt.dom.client.Style.Visibility;
 import com.google.gwt.event.dom.client.*;
 import com.google.gwt.user.client.Event;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.FlowPanel;
+import com.google.gwt.logging.client.LogConfiguration;
 
 import org.workcraft.gwt.shared.client.Callback1;
 import org.workcraft.gwt.shared.client.Function1;
@@ -33,8 +35,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class EditableFoodList extends Composite {
+
     private final UnorderedList<EditableFoodListItem> foodList;
     private final EditableFoodListItem newItem;
+
+    //ABS 3 imtes in the list task
+    private final EditableFoodListItem absListItem1;
+    private final EditableFoodListItem absListItem2;
+
     private final boolean markAsDrink;
     private final Callback1<List<FoodEntry>> onChange;
 
@@ -52,6 +60,13 @@ public class EditableFoodList extends Composite {
                     addItem(Option.some(linked));
                 }
             }
+
+        }
+
+        //ABS clean-up
+        if (!(foodList.getItems().isEmpty())) {
+            absListItem2.getElement().getStyle().setDisplay(Display.NONE);
+            absListItem1.getElement().getStyle().setDisplay(Display.NONE);
         }
     }
 
@@ -71,6 +86,12 @@ public class EditableFoodList extends Composite {
             return;
         addItem(Option.some(newItem.mkFoodEntry(markAsDrink)));
         newItem.clearText();
+
+        //ABS 3 fields changes
+        if ((absListItem1.getElement().getStyle().getDisplay() == "none") && !(absListItem2.getElement().getStyle().getDisplay() == "none"))
+            absListItem2.getElement().getStyle().setDisplay(Display.NONE);;
+        if (!(absListItem1.getElement().getStyle().getDisplay() == "none"))
+            absListItem1.getElement().getStyle().setDisplay(Display.NONE);        
         focusNew();
         onChange.call(getEnteredItems());
     }
@@ -96,9 +117,11 @@ public class EditableFoodList extends Composite {
         newItem = new EditableFoodListItem(Option.<FoodEntry>none());
         newItem.addStyleName("intake24-food-list-new-item");
         newItem.textBox.addStyleName("intake24-food-list-textbox-new-item");
+        newItem.textBox.getElement().setAttribute("name", "New food item input field");
 
         newItem.deleteButton.removeStyleName("intake24-food-list-delete-button");
         newItem.deleteButton.addStyleName("intake24-food-list-accept-button");
+        newItem.deleteButton.getElement().setAttribute("name", "Add new food item button");
         newItem.deleteButton.addClickHandler(new ClickHandler() {
             @Override
             public void onClick(ClickEvent event) {
@@ -116,8 +139,29 @@ public class EditableFoodList extends Composite {
             }
         });
 
+        //ABS changes = Adding 3 fields in FoodEdit Prompt
+        absListItem1 = new EditableFoodListItem(Option.<FoodEntry>none());
+        absListItem1.addStyleName("intake24-food-list-new-item");
+        absListItem1.textBox.addStyleName("intake24-food-list-textbox-new-item");
+        absListItem1.textBox.getElement().setAttribute("disabled", "disabled");
+        absListItem1.textBox.getElement().setAttribute("name", "disabled new food input field");
+        absListItem1.textBox.setText(" ");
+
+        absListItem2 = new EditableFoodListItem(Option.<FoodEntry>none());
+        absListItem2.addStyleName("intake24-food-list-new-item");
+        absListItem2.textBox.addStyleName("intake24-food-list-textbox-new-item");
+        absListItem2.textBox.getElement().setAttribute("disabled", "disabled");
+        absListItem2.textBox.getElement().setAttribute("name", "disabled new food input field");
+        absListItem2.textBox.setText(" ");
+
         UnorderedList<EditableFoodListItem> newItemContainer = new UnorderedList<EditableFoodListItem>();
         newItemContainer.addItem(newItem);
+        
+        //ABS canges = for adding 3 fields in FoodEdit Prompt
+        UnorderedList<EditableFoodListItem> absItem1Container = new UnorderedList<EditableFoodListItem>();
+        absItem1Container.addItem(absListItem1);
+        UnorderedList<EditableFoodListItem> absItem2Container = new UnorderedList<EditableFoodListItem>();
+        absItem2Container.addItem(absListItem2);
 
         newItem.showPlaceholderText();
 
@@ -151,6 +195,8 @@ public class EditableFoodList extends Composite {
 
         contents.add(foodList);
         contents.add(newItemContainer);
+        contents.add(absItem1Container);
+        contents.add(absItem2Container);
     }
 
     public List<EditableFoodListItem> linkedItems(EditableFoodListItem item) {

@@ -60,7 +60,7 @@ public class EditableFoodListItem extends Composite {
 	
 	public void showPlaceholderText() {
 		textBox.setText(messages.editMeal_listItemPlaceholder());
-		textBox.addStyleName("intake24-food-list-textbox-placeholder");
+		// textBox.addStyleName("intake24-food-list-textbox-placeholder");
 	}
 	
 	public FoodEntry mkFoodEntry(final boolean markAsDrink) {
@@ -152,6 +152,7 @@ public class EditableFoodListItem extends Composite {
 		textBox = new TextBox();
 		textBox.setEnabled(!isCompound);
 		textBox.addStyleName("intake24-food-list-textbox");
+		textBox.getElement().setAttribute("name", "food list item input field");
 		
 		textBox.setText(init.map(new Function1<FoodEntry, String>() {
 			@Override
@@ -167,6 +168,7 @@ public class EditableFoodListItem extends Composite {
 		deleteButton = WidgetFactory.createButton("");
 		deleteButton.getElement().getStyle().setVisibility(Visibility.HIDDEN);
 		deleteButton.addStyleName("intake24-food-list-delete-button");
+		deleteButton.getElement().setAttribute("name", "food list delete item button");
 		// deleteButton.setTitle(messages.editMeal_listItem_deleteButtonLabel());
 		
 		contents.add(deleteButton);

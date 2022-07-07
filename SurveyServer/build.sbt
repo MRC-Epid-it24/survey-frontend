@@ -16,7 +16,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-name := "intake24-survey-site"
+name := "intake24-survey-site-abs"
 
 organization := "uk.ac.ncl.openlab.intake24"
 
@@ -64,3 +64,21 @@ javaOptions in Universal ++= Seq(
 )
 
 lazy val root = (project in file(".")).enablePlugins(PlayScala, SystemdPlugin, JDebPackaging)
+
+// lazy val root = (project in file(".")).
+//   enablePlugins(PlayScala, SystemdPlugin, RpmPlugin).
+//   settings(
+//     name := "intake24-survey-site",
+//     scalaVersion := "2.12.14",
+//     defaultLinuxInstallLocation := "/opt",
+//     rpmPrefix := Some("/opt"),
+//     linuxPackageSymlinks := Seq.empty,
+//     defaultLinuxLogsLocation := defaultLinuxInstallLocation + "/" + name,
+//     packageName in Rpm := "intake24-survey-site",
+//     packageArchitecture in Rpm := "noarch",
+//     rpmRelease := "1",
+//     rpmVendor := "Monash",
+//     rpmUrl := Some("http://www.intake24.com"),
+//     rpmLicense := Some("MIT"),
+//     rpmGroup := Some("Applications/intake24")
+//   )

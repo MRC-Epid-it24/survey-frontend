@@ -141,6 +141,10 @@ public class LoginForm extends Composite {
                     doLoginAttempt();
             }
         });
+        userNameTextBox.getElement().setId("username-input");
+        passwordTextBox.getElement().setId("password-input");
+        userNameTextBox.setName("username");
+        passwordTextBox.setName("password");
 
         form.add(WidgetFactory.createButtonsPanel(loginButton));
         form.getElement().addClassName("intake24-login-form");

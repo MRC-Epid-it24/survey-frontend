@@ -137,7 +137,8 @@ public class EditMealPrompt implements Prompt<Meal, MealOperation> {
 
         drinkList = new EditableFoodList(meal.foods, drinkFilter, messages.editMeal_addDrinkButtonLabel(), true, onChange);
         final HTMLPanel drinksHeader = new HTMLPanel("h2", SafeHtmlUtils.htmlEscape(messages.editMeal_drinksHeader()));
-        drinkList.getElement().setId("intake24-drink-list");
+        // ABS delete duplicate id lements and add Namefor Accesibility API
+        // drinkList.getElement().setId("intake24-drink-list");
         final FlowPanel drinkListContainer = new FlowPanel();
         drinkListContainer.getElement().setId("intake24-drink-list");
         drinkListContainer.add(drinksHeader);
