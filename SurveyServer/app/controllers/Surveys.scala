@@ -23,7 +23,7 @@ class Surveys @Inject()(config: Configuration, ws: WSClient) extends Controller 
   private val privacyPolicyURL = config.getString("intake24.survey.privacyPolicyURL").get
   private val termsAndConditionsURL = config.getString("intake24.survey.termsAndConditionsURL").get
   private val displayLogos = config.getBoolean("intake24.survey.displayLogos").get
-  private val displayCookieConsent = config.getBoolean("intake24.survey.displayCookieConsent").get
+  private val displayCookieConsent: Boolean = Option(config.getBoolean("intake24.survey.displayCookieConsent").get).getOrElse(true)
 
   private val gaTrackingCode = config.getString("intake24.ga.trackingCode")
 
