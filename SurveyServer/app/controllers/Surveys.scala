@@ -23,6 +23,7 @@ class Surveys @Inject()(config: Configuration, ws: WSClient) extends Controller 
   private val privacyPolicyURL = config.getString("intake24.survey.privacyPolicyURL").get
   private val termsAndConditionsURL = config.getString("intake24.survey.termsAndConditionsURL").get
   private val displayLogos = config.getBoolean("intake24.survey.displayLogos").get
+  private val displayCookieConsent = config.getBoolean("intake24.survey.displayCookieConsent").get
 
   private val gaTrackingCode = config.getString("intake24.ga.trackingCode")
 
@@ -44,7 +45,7 @@ class Surveys @Inject()(config: Configuration, ws: WSClient) extends Controller 
 
             Json.fromJson[PublicSurveyParameters](Json.parse(response.body)) match {
               case JsSuccess(params, _) => Ok(Survey(surveyId, params, externalApiBaseUrl, privacyPolicyURL,
-                termsAndConditionsURL, displayLogos, gaTrackingCode, additionalCss))
+                termsAndConditionsURL, displayLogos, displayCookieConsent, gaTrackingCode, additionalCss))
               case JsError(p) =>
                 Logger.error("Could not parse API server public survey parameters response")
                 Logger.error("Response body: " + response.body)
