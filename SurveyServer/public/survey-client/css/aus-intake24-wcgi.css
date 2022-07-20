@@ -19,10 +19,18 @@
 .intake24-navbar a {
     color: #b32700;
 }
+.intake24-navbar a:focus {
+    color: #8e2002;
+}
 
 #intake4-time-question-skip-button {
     background-color: #238802;
     border-color: #238802;
+}
+
+#intake4-time-question-skip-button:focus {
+    background-color: #185c01;
+    border-color: #185c01;
 }
 
 .intake24-food-list-item {
@@ -43,9 +51,13 @@ button,
 }
 
 .intake24-button:hover,
+.intake24-button:focus,
 button:hover,
+button:focus,
 .counterIncButton:hover,
-.counterDecButton:hover {
+.counterIncButton:focus,
+.counterDecButton:hover,
+.counterDecButton:focus {
     background-color: #484848;
 }
 
@@ -60,7 +72,9 @@ button:hover,
 }
 
 .intake24-green-button:hover,
-.intake24-food-browser-skip-food-button:hover {
+.intake24-green-button:focus,
+.intake24-food-browser-skip-food-button:hover,
+.intake24-food-browser-skip-food-button:focus {
     background-color: #185c01;
     border-color: #185c01;
 }
