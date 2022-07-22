@@ -47,6 +47,7 @@ import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.HTMLPanel;
+import com.google.gwt.user.client.ui.Focusable;
 import org.workcraft.gwt.shared.client.Callback;
 import org.workcraft.gwt.shared.client.Callback1;
 import org.workcraft.gwt.shared.client.CollectionUtils.WithIndex;
@@ -78,6 +79,7 @@ public class NavigationPanel extends Composite {
 
         UnorderedList<MealPanel> mealList = new UnorderedList<MealPanel>();
         mealList.addStyleName("intake24-meal-list");
+        mealList.getElement().setTabIndex(0);
 
         for (WithIndex<Meal> m : state.mealsSortedByTime) {
             MealPanel p = new MealPanel(m.value, m.index, state.selectedElement, new Callback1<Selection>() {
@@ -86,6 +88,7 @@ public class NavigationPanel extends Composite {
                     requestSelection.call(arg1);
                 }
             });
+            p.getElement().setTabIndex(0);
             mealList.addItem(p);
         }
 

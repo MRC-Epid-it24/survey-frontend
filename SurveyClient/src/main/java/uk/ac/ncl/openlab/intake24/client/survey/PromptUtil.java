@@ -32,6 +32,7 @@ import com.google.gwt.safehtml.shared.SafeHtmlUtils;
 import com.google.gwt.user.client.History;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.*;
+import com.google.gwt.user.client.ui.Focusable;
 import org.workcraft.gwt.shared.client.Callback1;
 import org.workcraft.gwt.shared.client.Function1;
 import org.workcraft.gwt.shared.client.Pair;
@@ -170,6 +171,7 @@ public class PromptUtil {
         if (!History.getToken().equals("0")) {
             FlowPanel anchorDiv = new FlowPanel();
             anchorDiv.addStyleName("intake24-back-link-container");
+            anchorDiv.getElement().setTabIndex(0);
 
             Anchor back = new Anchor(SafeHtmlUtils.fromSafeConstant(messages.goBackLabel()));
             back.addClickHandler(new ClickHandler() {

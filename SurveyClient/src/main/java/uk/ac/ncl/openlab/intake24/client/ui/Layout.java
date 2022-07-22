@@ -9,6 +9,7 @@ import com.google.gwt.event.logical.shared.ResizeEvent;
 import com.google.gwt.event.logical.shared.ResizeHandler;
 import com.google.gwt.safehtml.shared.SafeHtmlUtils;
 import com.google.gwt.user.client.Window;
+import com.google.gwt.user.client.ui.Focusable;
 import com.google.gwt.user.client.ui.*;
 import uk.ac.ncl.openlab.intake24.client.BrowserConsole;
 import uk.ac.ncl.openlab.intake24.client.CommonMessages;
@@ -53,6 +54,7 @@ public class Layout {
 
         for (Anchor a : left) {
             HTMLPanel li = new HTMLPanel("li", "");
+            a.setTabIndex(0);
             li.add(a);
             navbarUserInfo.add(li);
         }
@@ -61,6 +63,7 @@ public class Layout {
 
         for (Anchor a : right) {
             HTMLPanel li = new HTMLPanel("li", "");
+            a.setTabIndex(0);
             li.add(a);
             navbarLinks.add(li);
         }
