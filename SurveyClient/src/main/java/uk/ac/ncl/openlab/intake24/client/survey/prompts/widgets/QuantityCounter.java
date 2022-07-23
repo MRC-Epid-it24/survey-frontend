@@ -56,12 +56,12 @@ public class QuantityCounter extends Composite {
 
         final FlowPanel panel = new FlowPanel();
 
-        wholeCounter = new LabelledCounter(getWholeLabel(), () -> updateValue(value + 1.0), () -> updateValue(value - 1.0));
+        wholeCounter = new LabelledCounter(getWholeLabel(), messages.quantity_wholeCaption(), () -> updateValue(value + 1.0), () -> updateValue(value - 1.0));
 
         wholeCounter.addStyleName("intake24-quantity-prompt-whole-counter");
         wholeCounter.getElement().setId("intake24-quantity-prompt-whole-counter");
 
-        fractionalCounter = new LabelledCounter(getFractionLabel(), () -> updateValue(value + 0.25), () -> updateValue(value - 0.25));
+        fractionalCounter = new LabelledCounter(getFractionLabel(), messages.quantity_fractionCaption(), () -> updateValue(value + 0.25), () -> updateValue(value - 0.25));
         fractionalCounter.addStyleName("intake24-quantity-prompt-frac-counter");
         fractionalCounter.getElement().setId("intake24-quantity-prompt-frac-counter");
 
