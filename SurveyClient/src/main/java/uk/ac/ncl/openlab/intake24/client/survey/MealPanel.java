@@ -30,6 +30,7 @@ import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.FlowPanel;
+import com.google.gwt.user.client.ui.Focusable;
 import com.google.gwt.user.client.ui.Label;
 import org.pcollections.PVector;
 import org.workcraft.gwt.shared.client.Callback1;
@@ -55,6 +56,7 @@ public class MealPanel extends Composite {
 
         FlowPanel foodRow = new FlowPanel();
         foodRow.addStyleName("intake24-food");
+        foodRow.getElement().setTabIndex(0);
 
         Label foodLabel = new Label(desc);
         foodLabel.addStyleName("intake24-food-name");
@@ -183,6 +185,7 @@ public class MealPanel extends Composite {
         if (!meal.foods.isEmpty()) {
             UnorderedList<FlowPanel> foodList = new UnorderedList<FlowPanel>();
             foodList.addStyleName("intake24-food-list");
+            foodList.getElement().setTabIndex(0);
 
             PVector<WithIndex<FoodEntry>> withIndex = zipWithIndex(meal.foods);
 

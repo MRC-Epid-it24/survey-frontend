@@ -98,11 +98,13 @@ public class ChoosePortionSizeMethodPrompt implements Prompt<FoodEntry, FoodOper
             img.addClickHandler(clickHandler);
 
             img.addStyleName("intake24-choose-portion-image");
+            PushButton imgButton = new PushButton(img, clickHandler);
+            imgButton.getElement().setTabIndex(0);
 
             FlowPanel container = new FlowPanel();
             container.addStyleName("intake24-choose-portion-container");
 
-            container.add(img);
+            container.add(imgButton);
 
             Label label = new Label(SafeHtmlUtils.htmlEscape(descriptions.getString(m.description)));
             label.addStyleName("intake24-choose-portion-label");

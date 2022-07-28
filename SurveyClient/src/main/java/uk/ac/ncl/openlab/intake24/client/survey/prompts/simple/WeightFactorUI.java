@@ -85,13 +85,13 @@ public class WeightFactorUI extends Composite {
         Button more = new Button();
 
         HTMLPanel moreLabel = new HTMLPanel("i", "");
-        moreLabel.addStyleName("fas fa-chevron-up intake24-as-served-weight-factor-button");
+        moreLabel.addStyleName("fas fa-plus intake24-as-served-weight-factor-button");
         more.getElement().appendChild(moreLabel.getElement());
         more.addClickHandler(e -> setWeightFactor(Math.min(maxNumerator, numerator + 1)));
 
         Button less = new Button();
         HTMLPanel lessLabel = new HTMLPanel("i", "");
-        lessLabel.addStyleName("fas fa-chevron-down intake24-as-served-weight-factor-button");
+        lessLabel.addStyleName("fas fa-minus intake24-as-served-weight-factor-button");
         less.getElement().appendChild(lessLabel.getElement());
         less.addClickHandler(e -> setWeightFactor(Math.max(minNumerator, numerator - 1)));
 

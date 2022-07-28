@@ -11,7 +11,7 @@ http://www.nationalarchives.gov.uk/doc/open-government-licence/
 */
 
 .intake24-food-browser-foods-container,
-	.intake24-food-browser-categories-container {
+.intake24-food-browser-categories-container {
 	border-bottom: #DDD 1px solid;
 	padding-bottom: 20px;
 	margin-bottom: 20px;
@@ -21,40 +21,77 @@ http://www.nationalarchives.gov.uk/doc/open-government-licence/
 	padding-bottom: 20px;
 }
 
-.intake24-food-browser-food, .intake24-food-browser-category {
+.intake24-food-browser-food,
+.intake24-food-browser-category {
 	font-size: 16px;
 	margin: 0px;
 	padding: 4px 0px;
 }
 
-.intake24-food-browser-recipe{
+.intake24-food-browser-container {
+	zoom: 0;
+	outline-width: 0px;
+	outline: none;
+
+	background-color: transparent;
+	border: none;
+	border-radius: 0px;
+	color: black;
+	cursor: auto;
+	display: block;
+	font-family: 'Helvetica Neue', Helvetica, sans-serif;
+	font-size: auto;
+	font-weight: normal;
+	padding: 0px;
+	line-height: 100%;
+	margin: 0px;
+	text-align: center;
+	white-space: nowrap;
+}
+
+.intake24-food-browser-container:focus {
+	background-color: transparent !important;
+	text-decoration: underline;
+}
+
+.intake24-food-browser-container:active {
+	background-color: transparent !important;
+	text-decoration: underline;
+}
+
+.intake24-food-browser-container:hover {
+	background-color: transparent !important;
+	text-decoration: underline;
+}
+
+.intake24-food-browser-recipe {
 	display: inline-block;
 	font-size: 16px;
 	margin: 0px;
 	padding: 6px 0px;
 }
 
-@media ( max-width : 960px) {
-	.intake24-food-browser-food, .intake24-food-browser-category {
+@media (max-width : 960px) {
+
+	.intake24-food-browser-food,
+	.intake24-food-browser-category {
 		padding: 8px 0px;
 	}
 }
 
 .intake24-food-browser-foods-container h2,
-	.intake24-food-browser-categories-container h2 {
+.intake24-food-browser-categories-container h2 {
 	margin: 15px 0px 5px 0px;
 }
 
-.intake24-food-browser-food:hover, .intake24-food-browser-category:hover
-	{
+.intake24-food-browser-food:hover,
+.intake24-food-browser-category:hover {
 	color: #444;
 	cursor: pointer;
 	text-decoration: underline;
 }
 
-.intake24-food-lookup-search-panel {
-	
-}
+.intake24-food-lookup-search-panel {}
 
 .intake24-food-lookup-textbox-container {
 	overflow: hidden;
@@ -75,13 +112,9 @@ http://www.nationalarchives.gov.uk/doc/open-government-licence/
 	margin-left: 15px;
 }
 
-.intake24-food-lookup-no-results {
-	
-}
+.intake24-food-lookup-no-results {}
 
-.intake24-food-browser {
-	
-}
+.intake24-food-browser {}
 
 .intake24-food-browser-sandwich-wizard {
 	font-size: 120%;
@@ -97,17 +130,13 @@ http://www.nationalarchives.gov.uk/doc/open-government-licence/
 	border-left: 2px darkgray solid;
 }
 
-.intake24-food-browser-back-link {
-	
-}
+.intake24-food-browser-back-link {}
 
 .intake24-food-browser-back-link-container {
 	margin-top: 15px;
 }
 
-.intake24-food-browser-ui {
-	
-}
+.intake24-food-browser-ui {}
 
 .intake24-food-browser-overlay {
 	position: absolute;

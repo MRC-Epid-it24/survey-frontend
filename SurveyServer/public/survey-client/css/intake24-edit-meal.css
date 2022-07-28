@@ -119,6 +119,11 @@ http://www.nationalarchives.gov.uk/doc/open-government-licence/
 	border: none;
 }
 
+.counterCaptionTextBox {
+	text-align: center;
+	border: none;
+}
+
 .counterIncButton, .counterDecButton {
 	background-color: #BBB;
 	border: 0px;

@@ -250,3 +250,6 @@ http://www.nationalarchives.gov.uk/doc/open-government-licence/
 .intake24-sliding-scale-canvas {
 	width: 100%;
 }
+.intake24-sliding-scale-canvas:focus {
+	border:1px solid black;
+}

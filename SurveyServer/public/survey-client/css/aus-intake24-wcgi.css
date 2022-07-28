@@ -1,3 +1,27 @@
+@-webkit-keyframes borderBlink {
+
+    from,
+    to {
+        border-color: black
+    }
+
+    50% {
+        border-color: transparent
+    }
+}
+
+@keyframes borderBlink {
+
+    from,
+    to {
+        border-color: black
+    }
+
+    50% {
+        border-color: transparent
+    }
+}
+
 .intake24-login-header h1 {
     color: #000000;
 }
@@ -20,9 +44,18 @@
     color: #b32700;
 }
 
+.intake24-navbar a:focus {
+    color: #8e2002;
+}
+
 #intake4-time-question-skip-button {
     background-color: #238802;
     border-color: #238802;
+}
+
+#intake4-time-question-skip-button:focus {
+    background-color: #185c01;
+    border-color: #185c01;
 }
 
 .intake24-food-list-item {
@@ -43,9 +76,13 @@ button,
 }
 
 .intake24-button:hover,
+.intake24-button:focus,
 button:hover,
+button:focus,
 .counterIncButton:hover,
-.counterDecButton:hover {
+.counterIncButton:focus,
+.counterDecButton:hover,
+.counterDecButton:focus {
     background-color: #484848;
 }
 
@@ -60,7 +97,9 @@ button:hover,
 }
 
 .intake24-green-button:hover,
-.intake24-food-browser-skip-food-button:hover {
+.intake24-green-button:focus,
+.intake24-food-browser-skip-food-button:hover,
+.intake24-food-browser-skip-food-button:focus {
     background-color: #185c01;
     border-color: #185c01;
 }
@@ -73,4 +112,30 @@ button:hover,
 .intake24-food-browser-food,
 .intake24-food-browser-category {
     padding: 1px 0px;
+}
+
+div:focus,
+input:focus,
+button:focus,
+textarea:focus,
+canvas:focus,
+p:focus {
+    border: 1px solid black;
+    -webkit-animation: borderBlink 0.5s step-end 1;
+    animation: borderBlink 0.5s step-end 1;
+}
+
+.intake24-food-browser-container:focus {
+    background-color: transparent !important;
+    text-decoration: underline;
+}
+
+.intake24-food-browser-container:active {
+    background-color: transparent !important;
+    text-decoration: underline;
+}
+
+.intake24-food-browser-container:hover {
+    background-color: transparent !important;
+    text-decoration: underline;
 }

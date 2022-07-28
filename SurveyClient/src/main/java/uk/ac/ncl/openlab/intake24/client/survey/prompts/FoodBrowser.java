@@ -30,10 +30,15 @@ import com.google.gwt.core.client.GWT;
 import com.google.gwt.core.client.Scheduler;
 import com.google.gwt.core.client.Scheduler.ScheduledCommand;
 import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.event.dom.client.KeyPressEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
+import com.google.gwt.event.dom.client.KeyPressHandler;
+import com.google.gwt.event.dom.client.KeyCodes;
 import com.google.gwt.safehtml.shared.SafeHtmlUtils;
 import com.google.gwt.user.client.Window;
+import com.google.gwt.user.client.ui.Focusable;
 import com.google.gwt.user.client.ui.*;
+import com.google.gwt.user.client.ui.Label;
 import org.fusesource.restygwt.client.Method;
 import org.fusesource.restygwt.client.MethodCallback;
 import org.pcollections.ConsPStack;
@@ -133,8 +138,10 @@ public class FoodBrowser extends Composite {
         else
             description = foodHeader.description();
 
-        Label item = new Label(description);
+        Button item = new Button(description);
         item.addStyleName("intake24-food-browser-food");
+        item.addStyleName("intake24-food-browser-container");
+        item.getElement().setTabIndex(0);
 
         if (foodHeader.code.equals(SpecialData.FOOD_CODE_SANDWICH))
             item.addStyleName("intake24-food-browser-sandwich-wizard");
@@ -160,6 +167,29 @@ public class FoodBrowser extends Composite {
                             onFoodChosen.call(foodData, index);
                         }
                     });
+                }
+            }
+        });
+        item.addKeyPressHandler(new KeyPressHandler() {
+            @Override
+            public void onKeyPress(KeyPressEvent event) {
+                if (event.getNativeEvent().getKeyCode() == KeyCodes.KEY_ENTER || event.getNativeEvent().getKeyCode() == KeyCodes.KEY_SPACE) {
+                    if (foodHeader.code.equals(SpecialData.FOOD_CODE_SANDWICH) || foodHeader.code.equals(SpecialData.FOOD_CODE_SALAD)) {
+                        onSpecialFoodChosen.call(foodHeader.code);
+                    } else {
+                        FoodDataService.INSTANCE.getFoodData(locale, foodHeader.code, new MethodCallback<FoodData>() {
+                            @Override
+                            public void onFailure(Method method, Throwable exception) {
+                                contents.clear();
+                                contents.add(WidgetFactory.createDefaultErrorMessage());
+                            }
+    
+                            @Override
+                            public void onSuccess(Method method, FoodData foodData) {
+                                onFoodChosen.call(foodData, index);
+                            }
+                        });
+                    }
                 }
             }
         });
@@ -239,8 +269,10 @@ public class FoodBrowser extends Composite {
             categoriesContainer.add(header);
 
             for (final CategoryHeader categoryData : result.categories) {
-                Label item = new Label(categoryData.description());
+                Button item = new Button(categoryData.description());
                 item.addStyleName("intake24-food-browser-category");
+                item.addStyleName("intake24-food-browser-container");
+                item.getElement().setTabIndex(0);
                 item.addClickHandler(new ClickHandler() {
                     @Override
                     public void onClick(ClickEvent arg0) {
@@ -255,6 +287,24 @@ public class FoodBrowser extends Composite {
                                         -1));
                         pushHistory(result, resultName, foodHeader, categoryHeader);
                         browse(categoryData.code, categoryData.description());
+                    }
+                });
+                item.addKeyPressHandler(new KeyPressHandler() {
+                    @Override
+                    public void onKeyPress(KeyPressEvent event) {
+                        if (event.getNativeEvent().getKeyCode() == KeyCodes.KEY_ENTER || event.getNativeEvent().getKeyCode() == KeyCodes.KEY_SPACE) {
+                            UxEventsHelper.postSearchResultSelected(
+                                    new SearchResultSelectionData(
+                                            Viewport.getCurrent(),
+                                            ContainerPosition.fromElement("intake24-food-browser-foods-container"),
+                                            ContainerPosition.fromElement("intake24-food-browser-categories-container"),
+                                            ContainerPosition.fromElement("intake24-food-browser-buttons-container").getOrDie(),
+                                            Option.none(),
+                                            Option.some(categoryData),
+                                            -1));
+                            pushHistory(result, resultName, foodHeader, categoryHeader);
+                            browse(categoryData.code, categoryData.description());
+                        }
                     }
                 });
                 categoriesContainer.add(item);

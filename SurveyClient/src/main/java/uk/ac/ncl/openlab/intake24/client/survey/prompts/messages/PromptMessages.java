@@ -462,6 +462,10 @@ public interface PromptMessages extends Messages {
 
     public String quantity_continueButtonLabel();
 
+    public String quantity_wholeCaption();
+    
+    public String quantity_fractionCaption();
+
     public String standardUnit_choiceLabel(String htmlEscape);
 
     public String asServed_servedLessButtonLabel();

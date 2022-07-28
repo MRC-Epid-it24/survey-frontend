@@ -91,7 +91,7 @@ public class ImageMap extends Composite {
     imageDiv = new FlowPanel();
     imageDiv.addStyleName("imagemap-container");
 
-    imageDiv.getElement().setTabIndex(1);
+    imageDiv.getElement().setTabIndex(0);
 
     final Image baseImage = new Image(definition.baseImageUrl);
     baseImage.addStyleName("imagemap-base-image");

@@ -23,8 +23,9 @@ public class LabelledCounter extends Composite {
     public int index;
 
     public final Label label = new Label();
+    public final Label captionLabel = new Label();
 
-    public LabelledCounter(final String initialLabel, final Callback onIncreaseClicked, final Callback onDecreaseClicked) {
+    public LabelledCounter(final String initialLabel, final String captionLabelText, final Callback onIncreaseClicked, final Callback onDecreaseClicked) {
         VerticalPanel panel = new VerticalPanel();
 
         panel.setStyleName("counterPanel");
@@ -48,13 +49,16 @@ public class LabelledCounter extends Composite {
         label.setStyleName("counterTextBox");
         label.getElement().getStyle().setFontSize(100, Unit.PCT);
         label.getElement().getStyle().setHeight(1.2, Unit.EM);
+        captionLabel.setStyleName("counterCaptionTextBox");
+        captionLabel.getElement().getStyle().setFontSize(80, Unit.PCT);
 
         label.setText(initialLabel);
+        captionLabel.setText(captionLabelText);
 
         panel.add(inc);
         panel.add(label);
         panel.add(dec);
-
+        panel.add(captionLabel);
         initWidget(panel);
     }
 
