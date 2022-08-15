@@ -111,7 +111,12 @@ button:focus,
 
 .intake24-food-browser-food,
 .intake24-food-browser-category {
-    padding: 1px 0px;
+    padding: 3px 0px;
+    max-width: 90%;
+    white-space: normal;
+    text-align: inherit;
+    line-break: normal;
+    line-height: inherit;
 }
 
 div:focus,
