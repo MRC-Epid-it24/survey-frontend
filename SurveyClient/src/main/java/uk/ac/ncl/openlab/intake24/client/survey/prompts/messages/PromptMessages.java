@@ -522,9 +522,9 @@ public interface PromptMessages extends Messages {
 
     public String drinkScale_leftPromptText(@Optional String escapedFoodDesc);
 
-    public String guide_choicePromptText(@Optional String escapedFoodDesc);
+    public String guide_choicePromptText();
 
-    public String guide_quantityPromptText(@Optional String escapedFoodDesc);
+    public String guide_quantityPromptText();
 
     public String guide_quantityContinueButtonLabel();
 
