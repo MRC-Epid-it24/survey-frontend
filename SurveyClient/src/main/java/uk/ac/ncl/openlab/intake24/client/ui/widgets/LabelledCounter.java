@@ -48,7 +48,7 @@ public class LabelledCounter extends Composite {
 
         label.setStyleName("counterTextBox");
         label.getElement().getStyle().setFontSize(100, Unit.PCT);
-        label.getElement().getStyle().setHeight(1.2, Unit.EM);
+        label.getElement().getStyle().setHeight(1.5, Unit.EM);
         captionLabel.setStyleName("counterCaptionTextBox");
         captionLabel.getElement().getStyle().setFontSize(80, Unit.PCT);
 
