@@ -140,21 +140,24 @@ public class DrinkScaleScript implements PortionSizeScript {
                                             SafeHtmlUtils.fromSafeConstant(messages.drinkScale_servedPromptText()), getScaleDef(Integer.parseInt(data.get("containerIndex"))),
                                             messages.drinkScale_servedLessButtonLabel(), messages.drinkScale_servedMoreButtonLabel(), messages.drinkScale_servedContinueButtonLabel(),
                                             1.0, Double.parseDouble(data.get("initial-fill-level")), "fillLevel"), foodData.description())), calcFillVolume));
-        } else if (!data.containsKey("leftoversLevel")) {
-            if (!data.containsKey("leftovers"))
-                return Option.some(PromptUtil.map(
-                        withBackLink(
-                                withHeader(
-                                        yesNoPromptZeroField(SafeHtmlUtils.fromSafeConstant(messages.drinkScale_leftoversQuestionPromptText(escapedFoodDesc)), messages.yesNoQuestion_defaultYesLabel(), messages.yesNoQuestion_defaultNoLabel(), "leftovers",
-                                                "leftoversLevel"), foodData.description())), calcLeftoversVolume));
-            else
-                return Option.some(PromptUtil.map(
-                        withBackLink(
-                                withHeader(
-                                        drinkScalePrompt(SafeHtmlUtils.fromSafeConstant(messages.drinkScale_leftPromptText(escapedFoodDesc)),
-                                                getScaleDef(Integer.parseInt(data.get("containerIndex"))), messages.drinkScale_leftLessButtonLabel(), messages.drinkScale_leftMoreButtonLabel(), messages.drinkScale_leftContinueButtonLabel(),
-                                                Double.parseDouble(data.get("fillLevel")), 0, "leftoversLevel"), foodData.description())), calcLeftoversVolume));
         } else
-            return done();
+            return withoutLeftoversDrinkDone();
+        //else if (!data.containsKey("leftoversLevel")) {
+            // return done();
+            // if (!data.containsKey("leftovers"))
+            //     return Option.some(PromptUtil.map(
+            //             withBackLink(
+            //                     withHeader(
+            //                             yesNoPromptZeroField(SafeHtmlUtils.fromSafeConstant(messages.drinkScale_leftoversQuestionPromptText(escapedFoodDesc)), messages.yesNoQuestion_defaultYesLabel(), messages.yesNoQuestion_defaultNoLabel(), "leftovers",
+            //                                     "leftoversLevel"), foodData.description())), calcLeftoversVolume));
+            // else
+            //     return Option.some(PromptUtil.map(
+            //             withBackLink(
+            //                     withHeader(
+            //                             drinkScalePrompt(SafeHtmlUtils.fromSafeConstant(messages.drinkScale_leftPromptText(escapedFoodDesc)),
+            //                                     getScaleDef(Integer.parseInt(data.get("containerIndex"))), messages.drinkScale_leftLessButtonLabel(), messages.drinkScale_leftMoreButtonLabel(), messages.drinkScale_leftContinueButtonLabel(),
+            //                                     Double.parseDouble(data.get("fillLevel")), 0, "leftoversLevel"), foodData.description())), calcLeftoversVolume));
+        //} 
+
     }
 }

@@ -111,9 +111,18 @@ button:focus,
 
 .intake24-food-browser-food,
 .intake24-food-browser-category {
+<<<<<<< HEAD
     padding: 5px 0px;
     white-space: break-spaces;
     text-align: left;
+=======
+    padding: 3px 0px;
+    max-width: 90%;
+    white-space: normal;
+    text-align: inherit;
+    line-break: normal;
+    line-height: inherit;
+>>>>>>> ABS_06.2022
 }
 
 div:focus,

@@ -13,7 +13,7 @@ intake24 {
   ga.trackingCode = ""
 
   supportEmail = "support@intake24.co.uk"
-  videoURL = "https://www.youtube.com/watch?v=70Wm_kyxpvg"
+  videoURL = "https://www.youtube.com/watch?v=iEt4MDngSkA"
 
   survey {
     termsAndConditionsURL = "/info/terms#content"

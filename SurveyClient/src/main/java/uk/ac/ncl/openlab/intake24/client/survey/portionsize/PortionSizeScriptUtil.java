@@ -61,6 +61,13 @@ public class PortionSizeScriptUtil {
         return Option.none();
     }
 
+    public static Option<SimplePrompt<UpdateFunc>> withoutLeftoversDrinkDone() {
+        UpdateFunc setField = new UpdateFunc().setField("leftovers", Boolean.toString(false));
+        setField.setField("leftoversLevel", "0");
+        setField.setField("leftovers", Boolean.toString(false));
+        return Option.none();
+    }
+
     public static SimplePrompt<UpdateFunc> quantityPrompt(final SafeHtml promptHtml, final String confirmText, final String field) {
         return (map(new FractionalQuantityPrompt(promptHtml, confirmText), new Function1<Double, UpdateFunc>() {
             @Override
@@ -190,6 +197,7 @@ public class PortionSizeScriptUtil {
         return map(new DrinkScalePrompt(promptDef), new Function1<Double, UpdateFunc>() {
             @Override
             public UpdateFunc apply(Double argument) {
+                // UpdateFunc setLeftOverFieldImplicitly = new UpdateFunc().setField("leftovers", "false");
                 return new UpdateFunc().setField(levelField, Double.toString(argument));
             }
         });
