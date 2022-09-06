@@ -16,9 +16,15 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-name := "intake24-survey-site-abs"
+// name := "intake24-survey-site-abs"
+val organization = "uk.ac.ncl.openlab.intake24"
 
-organization := "uk.ac.ncl.openlab.intake24"
+// name := "intake24-survey-site-abs"
+
+name := "intake24-survey-site"
+
+
+//organization := organizationVal
 
 description := "Intake24 GWT survey client"
 
@@ -29,6 +35,13 @@ version := "3.2.0-SNAPSHOT"
 scalaVersion := "2.12.14"
 
 resolvers += Resolver.mavenLocal
+
+lazy val packageManagerSettings = Seq(
+  rpmRelease := "3.0.16",
+  rpmVendor := "uk.ac.ncl.openlab.intake24",
+  rpmUrl := Some("https://github.com/intake24/survey-frontend"),
+  rpmLicense := Some("ASL 2.0")
+)
 
 libraryDependencies ++= Seq(
   ws,
@@ -63,7 +76,8 @@ javaOptions in Universal ++= Seq(
   s"-Dlogger.file=/usr/share/${packageName.value}/conf/production-logger.xml"
 )
 
-lazy val root = (project in file(".")).enablePlugins(PlayScala, SystemdPlugin, JDebPackaging)
+
+//lazy val root = (project in file(".")).enablePlugins(PlayScala, SystemdPlugin, JDebPackaging)
 
 // lazy val root = (project in file(".")).
 //   enablePlugins(PlayScala, SystemdPlugin, RpmPlugin).
@@ -82,3 +96,6 @@ lazy val root = (project in file(".")).enablePlugins(PlayScala, SystemdPlugin, J
 //     rpmLicense := Some("MIT"),
 //     rpmGroup := Some("Applications/intake24")
 //   )
+
+lazy val root = (project in file(".")).settings(packageManagerSettings: _*).enablePlugins(PlayScala, SystemdPlugin, JDebPackaging, RpmPlugin)
+

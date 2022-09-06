@@ -48,7 +48,7 @@ import uk.ac.ncl.openlab.intake24.client.ui.WidgetFactory;
 import java.util.ArrayList;
 
 public class FoodLookupPrompt implements Prompt<Pair<FoodEntry, Meal>, MealOperation> {
-    private final static int MAX_RESULTS = 50;
+    private final static int MAX_RESULTS = 30;
     private final static PromptMessages messages = PromptMessages.Util.getInstance();
     private final static HelpMessages helpMessages = HelpMessages.Util.getInstance();
 

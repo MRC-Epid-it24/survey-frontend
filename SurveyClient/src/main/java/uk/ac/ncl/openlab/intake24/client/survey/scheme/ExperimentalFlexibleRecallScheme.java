@@ -83,7 +83,7 @@ public class ExperimentalFlexibleRecallScheme extends DefaultScheme {
 
                 TreePVector.<WithPriority<PromptRule<Survey, SurveyOperation>>>empty()
                         .plus(ConfirmCompletionFlexibleRecall.withPriority(0, getStateManager()))
-                        .plus(ShowEnergyValidationPrompt.withPriority(1, 500.0))
+                        .plus(ShowEnergyValidationPrompt.withPriority(1, 0.0))
                         .plus(ShowEmptySurveyPrompt.withPriority(1))
                         .plus(ShowTimeGapPrompt.withPriority(2, 180, new Time(9, 0), new Time(21, 0)))
 
