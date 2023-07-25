@@ -596,7 +596,7 @@ public interface StandardUnits extends ConstantsWithLookup {
 	public String mini_Oreos_estimate_in();
 	public String mini_Oreos_how_many();
 
-	public String mini_baby_peppers_in();
+	public String mini_baby_peppers_estimate_in();
 	public String mini_baby_peppers_how_many();
 
 	public String mini_bars_estimate_in();
