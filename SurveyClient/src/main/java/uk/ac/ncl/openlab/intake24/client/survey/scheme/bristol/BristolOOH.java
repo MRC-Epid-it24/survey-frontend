@@ -60,8 +60,9 @@ public class BristolOOH extends BasicScheme {
                         .plus(AskAboutFoodSourceFollowUp.withPriority(8))
                         .plus(ReadyToEat.withPriority(7))
                         .plus(MealLocation.withPriority(6))
-                        .plus(MealLocationFollowUp.withPriority(5))
-                        .plus(MealCompany.withPriority(4)),
+                        .plus(MealDelivery.withPriority(5))
+                        .plus(MealLocationFollowUp.withPriority(4))
+                        .plus(MealCompany.withPriority(3)),
                 TreePVector.<WithPriority<PromptRule<FoodEntry, FoodOperation>>>empty()
                         .plus(ShowNextPortionSizeStep.withPriority(scriptManager, 0))
                         .plus(ChoosePortionSizeMethod.withPriority(1))

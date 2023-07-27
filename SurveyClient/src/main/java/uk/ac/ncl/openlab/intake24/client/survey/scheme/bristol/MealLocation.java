@@ -22,10 +22,7 @@ public class MealLocation implements PromptRule<Meal, MealOperation> {
             TreePVector.<MultipleChoiceQuestionOption>empty()
                     .plus(new MultipleChoiceQuestionOption("Yes"))
                     .plus(new MultipleChoiceQuestionOption("No, I took it away"))
-                    .plus(new MultipleChoiceQuestionOption(
-                            "No, it was delivered to me using a 3rd party delivery service (e.g. Deliveroo, JustEat etc.)",
-                            "No, it was delivered to me using a 3rd party delivery service"))
-                    .plus(new MultipleChoiceQuestionOption("No, it was delivered to me directly by the outlet"));
+                    .plus(new MultipleChoiceQuestionOption("No, it was delivered to me"));
 
     @Override
     public Option<Prompt<Meal, MealOperation>> apply(Meal state, SelectionMode selectionType, PSet<String> surveyFlags) {

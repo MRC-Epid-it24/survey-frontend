@@ -12,16 +12,11 @@ import uk.ac.ncl.openlab.intake24.client.survey.prompts.MultipleChoiceQuestionOp
 import uk.ac.ncl.openlab.intake24.client.survey.prompts.messages.PromptMessages;
 import uk.ac.ncl.openlab.intake24.client.survey.prompts.simple.RadioButtonPrompt;
 
-public class ReadyToEat implements PromptRule<Meal, MealOperation> {
+public class MealDelivery implements PromptRule<Meal, MealOperation> {
 
-    private static final String READY_TO_EAT_KEY = "readyToEat";
+    private static final String MEAL_DELIVERY_KEY = "mealDelivery";
 
-    private static final String promptTemplate = "<p>Was most of your $meal ‘ready-to-eat’ when you got it?</p>" +
-            "<p>Ready-to-eat means items from outside the home that <strong><u>came already cooked or " +
-            "prepared</u></strong>, with no further cooking, heating or preparation required before being eaten " +
-            "or drank (e.g. pre-packed sandwiches, hot beverages, alcoholic drinks in pubs or clubs, items from " +
-            "vending machines, takeaways, eating-in at restaurants, cafes, canteens, etc., but not 'ready-meals' " +
-            "that require you to heat them before eating).</p>";
+    private static final String promptTemplate = "<p>Was your $meal purchased through a 3<sup>rd</sup> party ordering service (<em>e.g. Deliveroo, JustEat, etc.</em>)?</p>";
 
     private static final PVector<MultipleChoiceQuestionOption> options =
             TreePVector.<MultipleChoiceQuestionOption>empty()
@@ -31,21 +26,24 @@ public class ReadyToEat implements PromptRule<Meal, MealOperation> {
 
     @Override
     public Option<Prompt<Meal, MealOperation>> apply(Meal state, SelectionMode selectionType, PSet<String> surveyFlags) {
-        if (!state.customData.containsKey(READY_TO_EAT_KEY) && !state.isEmpty() && state.portionSizeComplete()) {
+        if (!state.customData.containsKey(MEAL_DELIVERY_KEY) &&
+                state.customData.containsKey(MealLocation.MEAL_LOCATION_KEY) &&
+                state.customData.get(MealLocation.MEAL_LOCATION_KEY).equals("No, it was delivered to me") &&
+                !state.isEmpty() && state.portionSizeComplete()) {
             SafeHtml promptSafeText = SafeHtmlUtils.fromSafeConstant(promptTemplate.replace("$meal", SafeHtmlUtils.htmlEscape(state.name.toLowerCase())));
 
-            RadioButtonPrompt prompt = new RadioButtonPrompt(promptSafeText, ReadyToEat.class.getSimpleName(),
+            RadioButtonPrompt prompt = new RadioButtonPrompt(promptSafeText, MealDelivery.class.getSimpleName(),
                     options, PromptMessages.INSTANCE.mealComplete_continueButtonLabel(),
-                    "readyToEat");
+                    "mealDelivery");
 
             return Option.some(PromptUtil.asMealPrompt(prompt, answer ->
-                    MealOperation.setCustomDataField(READY_TO_EAT_KEY, answer.getValue())));
+                    MealOperation.setCustomDataField(MEAL_DELIVERY_KEY, answer.getValue())));
         } else {
             return Option.none();
         }
     }
 
     public static WithPriority<PromptRule<Meal, MealOperation>> withPriority(int priority) {
-        return new WithPriority<>(new ReadyToEat(), priority);
+        return new WithPriority<>(new MealDelivery(), priority);
     }
 }
