@@ -74,7 +74,7 @@ public abstract class MultipleChoiceQuestion<T> extends Composite {
         int optionIndex = 0;
 
         for (MultipleChoiceQuestionOption option : options) {
-            CheckBox checkBox = createCheckBox(SafeHtmlUtils.fromString(option.label), option.value.getOrElse(option.label));
+            CheckBox checkBox = createCheckBox(SafeHtmlUtils.fromSafeConstant(option.label), option.value.getOrElse(option.label));
 
             checkBox.setFormValue(option.value.getOrElse(option.label));
 

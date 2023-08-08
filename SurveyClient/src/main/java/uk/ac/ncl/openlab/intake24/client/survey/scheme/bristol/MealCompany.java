@@ -22,7 +22,7 @@ public class MealCompany implements PromptRule<Meal, MealOperation> {
     private static final PVector<MultipleChoiceQuestionOption> options =
             TreePVector.<MultipleChoiceQuestionOption>empty()
                     .plus(new MultipleChoiceQuestionOption("By myself"))
-                    .plus(new MultipleChoiceQuestionOption("With parents / caregivers / other older relatives (e.g. grandparents, aunt etc.)"))
+                    .plus(new MultipleChoiceQuestionOption("With parents / caregivers / other older relatives (<em>e.g. grandparents, aunt etc.</em>)"))
                     .plus(new MultipleChoiceQuestionOption("With siblings"))
                     .plus(new MultipleChoiceQuestionOption("With partner / boyfriend / girlfriend"))
                     .plus(new MultipleChoiceQuestionOption("With my child / children"))

@@ -28,7 +28,7 @@ public class MealDelivery implements PromptRule<Meal, MealOperation> {
     public Option<Prompt<Meal, MealOperation>> apply(Meal state, SelectionMode selectionType, PSet<String> surveyFlags) {
         if (!state.customData.containsKey(MEAL_DELIVERY_KEY) &&
                 state.customData.containsKey(MealLocation.MEAL_LOCATION_KEY) &&
-                state.customData.get(MealLocation.MEAL_LOCATION_KEY).equals("No, it was delivered to me") &&
+                !state.customData.get(MealLocation.MEAL_LOCATION_KEY).equals("Yes") &&
                 !state.isEmpty() && state.portionSizeComplete()) {
             SafeHtml promptSafeText = SafeHtmlUtils.fromSafeConstant(promptTemplate.replace("$meal", SafeHtmlUtils.htmlEscape(state.name.toLowerCase())));
 
