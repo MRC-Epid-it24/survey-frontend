@@ -107,6 +107,15 @@ public interface StandardUnits extends ConstantsWithLookup {
 	public String cans_estimate_in();
 	public String cans_how_many();
 
+	public String cans_200ml_estimate_in();
+	public String cans_200ml_how_many();
+
+	public String cans_250ml_estimate_in();
+	public String cans_250ml_how_many();
+
+	public String cans_330ml_estimate_in();
+	public String cans_330ml_how_many();
+
 	public String cartons_estimate_in();
 	public String cartons_how_many();
 
