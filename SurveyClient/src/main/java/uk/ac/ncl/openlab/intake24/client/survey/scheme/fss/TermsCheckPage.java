@@ -72,13 +72,12 @@ public class TermsCheckPage implements SurveyStage<Survey> {
 
         HTMLPanel text1 = new HTMLPanel(SafeHtmlUtils.fromSafeConstant(
                 "<p>Throughout this food diary the questions will be phrased as \"what did you have to eat for ...\"</p>" +
-                "<p>This is in relation to what <strong>the child mentioned in the letter you received ate yesterday.</strong> " +
-                "Please respond for the child named in the letter throughout.</p>"));
+                "<p>This is in relation to what <strong>the child selected in the survey you just completed had to eat yesterday.</strong> " +
+                "Please respond for the child named throughout.</p>"));
 
         HTMLPanel text2 = new HTMLPanel(SafeHtmlUtils.fromSafeConstant(
-                "<p>I can confirm that I will respond in relation to the food consumed by the child mentioned " +
-                        "in the letter yesterday (please note this might be you if you are the child named " +
-                        "in the letter).</p>"));
+                "<p>I can confirm that I will respond in relation to the food consumed yesterday by the child mentioned " +
+                        "in the survey (please note this might be you if you are the child named in the survey).</p>"));
 
         content.add(text1);
         content.add(text2);
